@@ -1,3 +1,3 @@
-define('app/model', function(model) {
-	
+define('app/model', 'app/view', 'app/controller', function(model, view, controller) {
+
 })
