@@ -1,4 +1,3 @@
-require(['app/controller'],
-	function(controller){
+require(['app/model', 'app/view', 'app/controller'], function(model, view, controller) {
 	
 });
