@@ -15,7 +15,7 @@ define(['app/model/Person', 'app/model/Joke', 'app/model/Rating', 'app/model/Com
 			Comments = Backbone.Collection.extend({
 				model: Comment
 			});
-			this.set('groups', new Comments);
+			this.set('comments', new Comments);
 
 			Persons = Backbone.Collection.extend({
 				model: Person
