@@ -6,10 +6,10 @@ define(['app/model/Joke', 'app/model/Group', 'app/model/Rating'], function(Joke,
 			});
 			this.set('jokes', new Jokes);
 
-			Groups = Backbone.Collection.extend({
-				model: Group
+			Comments = Backbone.Collection.extend({
+				model: Comment
 			});
-			this.set('groups', new Groups);
+			this.set('groups', new Comments);
 
 			Ratings = Backbone.Collection.extend({
 				model: Rating
@@ -23,15 +23,15 @@ define(['app/model/Joke', 'app/model/Group', 'app/model/Rating'], function(Joke,
 			"password" : null,
 			"email" : null,
 			"loggedIn" : false
-		}
+		},
 		jokes: function() {
 			return this.get('jokes');
-		}),
-		groups: function() {
-			return this.get('groups');
-		}),
+		},
+		comments: function() {
+			return this.get('comments');
+		},
 		ratings: function() {
 			return this.get('ratings');
-		})
+		}
 	});
 });

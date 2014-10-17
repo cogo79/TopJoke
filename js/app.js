@@ -1,5 +1,6 @@
 require(['app/model/Group', 'app/model/Person', 'app/model/Joke', 'app/model/Rating', 'app/model/Comment', 'app/controller'], function(Group, Person, Joke, Rating, Comment, controller) {
 	var group = new Group({"groupName" : "mainGroup"});
+	var group2 = new Group({"groupName" : "mainGroup"});
 	var miguel = new Person({
 		"username" : "migobigo",
 		"password" : "blabla222",
@@ -12,9 +13,18 @@ require(['app/model/Group', 'app/model/Person', 'app/model/Joke', 'app/model/Rat
 	});
 	group.persons().add(miguel);
 	group.persons().add(jenny);
+	group2.persons().add(miguel);
+	group2.persons().add(jenny);
+
+
+
+	/*
 	console.log("count: ", group.persons().length);
 	console.log(group);
 
 	miguel.destroy();
 	console.log("count: ", group.persons().length);
+	*/
+
+
 });
