@@ -1,3 +1,3 @@
-define(['app/model/Group'], function(Group){
+define([], function(){
 	
 });
