@@ -1,0 +1,21 @@
+body, html { 
+    overflow-x: hidden; 
+    overflow-y: hidden;
+}
+
+.topjoke-navbar {
+	position: absolute;
+}
+
+.list{
+    height: calc(100% - 60px);
+    overflow-y:scroll;
+}
+
+
+
+
+
+
+
+

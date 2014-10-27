@@ -22,6 +22,7 @@ define(['app/model/Joke', 'app/model/Group', 'app/model/Rating'], function(Joke,
 			"username" : null,
 			"password" : null,
 			"email" : null,
+			"bio" : "",
 			"loggedIn" : false
 		},
 		jokes: function() {

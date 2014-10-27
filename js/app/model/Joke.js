@@ -21,9 +21,10 @@ define(['app/model/Rating', 'app/model/Comment'], function(Rating, Comment){
 		return this.get('comments');
 		},
 		defaults: {
+			"title" : "0",
 			"joke" : "0",
-			"date" : null,
-		},
+			"date" : null
+		}
 
 	});
 });
