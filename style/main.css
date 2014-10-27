@@ -3,7 +3,8 @@ body, html {
     overflow-y: hidden;
 }
 
-.topjoke-navbar {
+.navbar {
+	margin-bottom: 0px;
 	position: absolute;
 }
 
