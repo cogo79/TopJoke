@@ -5,6 +5,7 @@ define([], function(){
 		},
 		defaults: {
 			"comment" : null,
+			"commentPersonId" : null,
 			"date" : null
 		}
 	});

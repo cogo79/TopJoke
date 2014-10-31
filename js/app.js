@@ -1,6 +1,6 @@
 require(['app/model/Group', 'app/model/Person', 'app/model/Joke', 'app/model/Rating', 'app/model/Comment', 'app/controller'], function(Group, Person, Joke, Rating, Comment, controller) {
 	var group = new Group({"groupName" : "mainGroup"});
-	var group2 = new Group({"groupName" : "mainGroup"});
+	var group2 = new Group({"groupName" : "Rooster gang"});
 	var miguel = new Person({
 		"username" : "migobigo",
 		"password" : "blabla222",
@@ -16,32 +16,44 @@ require(['app/model/Group', 'app/model/Person', 'app/model/Joke', 'app/model/Rat
 	group2.persons().add(miguel);
 	group2.persons().add(jenny);
 
+	var joke1 = new Joke({"title" : "Goofer",
+		"joke" : "Goofy feel on his knes and said, 'Dude stop turning me on!' Goofy feel on his knes and said, 'Dude stop turning me on!' Goofy feel on his knes and said, 'Dude stop turning me on!' Goofy feel on his knes and said, 'Dude stop turning me on!' Goofy feel on his knes and said, 'Dude stop turning me on!' Goofy feel on his knes and said, 'Dude stop turning me on!' Goofy feel on his knes and said, 'Dude stop turning me on!' Goofy feel on his knes and said, 'Dude stop turning me on!' Goofy feel on his knes and said, 'Dude stop turning me on!' Goofy feel on his knes and said, 'Dude stop turning me on!' Goofy feel on his knes and said, 'Dude stop turning me on!' Goofy feel on his knes and said, 'Dude stop turning me on!' Goofy feel on his knes and said, 'Dude stop turning me on!' Goofy feel on his knes and said, 'Dude stop turning me on!'",
+		"date" : Date()
+	});
+	console.log("joke1.toJSON() --> ", joke1.toJSON());
+	miguel.jokes().add(joke1);
+	console.log("miguel and his jokes: ", miguel);
+
 	JokeView = Backbone.View.extend({
 		template: _.template($("#joke_template").html()),
 		initialize: function(){
 			this.render();
 		},
 		render: function(){
-            //Pass variables in using Underscore.js Template
-            console.log("So far so good");
-            var variables = { jokeTitle: "hahahahaha ;D", joke: "Group loop croooop hahahah ;D", jokeAuthor: "Miguel Ehrstrand" };
-
-    // Pass this object onto the template function.
-    // This returns an HTML string.
-    var html = this.template(variables);
-
-    // Append the result to the view's element.
-    $(this.el).append(html);
-            /*
-            // Compile the template using underscore
-            var template = _.template( $("#joke_template").html(), variables );
-            // Load the compiled HTML into the Backbone "el"
-            this.$el.html( template );
-            */
+            var variables = { title: joke1.get("title"), joke: joke1.get("joke"),
+             jokeAuthor: miguel.get("username") };
+    		var html = this.template(variables);
+			$(this.el).append(html);
         }
     });
 
 	var joke_view = new JokeView({ el: $("#joke-list") });
+	new JokeView({ el: $("#joke-list") });
+	new JokeView({ el: $("#joke-list") });
+	new JokeView({ el: $("#joke-list") });
+	new JokeView({ el: $("#joke-list") });
+	new JokeView({ el: $("#joke-list") });
+	new JokeView({ el: $("#joke-list") });
+	new JokeView({ el: $("#joke-list") });
+	new JokeView({ el: $("#joke-list") });
+	new JokeView({ el: $("#joke-list") });
+	new JokeView({ el: $("#joke-list") });
+	new JokeView({ el: $("#joke-list") });
+	new JokeView({ el: $("#joke-list") });
+	new JokeView({ el: $("#joke-list") });
+	new JokeView({ el: $("#joke-list") });
+	new JokeView({ el: $("#joke-list") });
+
 	console.log("How are we doing now?");
 	/*
 	console.log("count: ", group.persons().length);
