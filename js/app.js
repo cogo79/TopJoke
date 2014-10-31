@@ -1,20 +1,40 @@
 require(['app/model/Group', 'app/model/Person', 'app/model/Joke', 'app/model/Rating', 'app/model/Comment', 'app/controller'], function(Group, Person, Joke, Rating, Comment, controller) {
-	var group = new Group({"groupName" : "mainGroup"});
-	var group2 = new Group({"groupName" : "Rooster gang"});
 	var miguel = new Person({
 		"username" : "migobigo",
 		"password" : "blabla222",
 		"email" : "skumbag@playboy.com"
 	});
 	var jenny = new Person({
-		"username" : "jennybenny",
+		"username" : "jenny",
 		"password" : "nej444422",
-	//	"email" : "jenny@aftonbladet.se"
-});
-	group.persons().add(miguel);
-	group.persons().add(jenny);
-	group2.persons().add(miguel);
-	group2.persons().add(jenny);
+		"email" : "jenny.janson@aftonbladet.se"
+	});
+	var micke = new Person({
+		"username" : "micke",
+		"password" : "nej422Jo",
+		"email" : "micke.person@aftonbladet.se"
+	});
+	var pelle = new Person({
+		"username" : "Pelle",
+		"password" : "jajag heter pelle tamefan",
+		"email" : "pelle.berggren@aftonbladet.se"
+	});
+	var cissela = new Person({
+		"username" : "Cissela",
+		"password" : "jajag heter pelle tamefan",
+		"email" : "pelle.berggren@aftonbladet.se"
+	});
+
+	var mainGroup = new Group({"groupName" : "mainGroup"});
+	mainGroup.persons().add(miguel);
+	mainGroup.persons().add(jenny);
+	mainGroup.persons().add(micke);
+	mainGroup.persons().add(pelle);
+	mainGroup.persons().add(cissela);
+
+	var roosterGang = new Group({"groupName" : "Rooster gang"});
+	roosterGang.persons().add(miguel);
+	roosterGang.persons().add(jenny);
 
 	var joke1 = new Joke({"title" : "Goofer",
 		"joke" : "Goofy feel on his knes and said, 'Dude stop turning me on!' Goofy feel on his knes and said, 'Dude stop turning me on!' Goofy feel on his knes and said, 'Dude stop turning me on!' Goofy feel on his knes and said, 'Dude stop turning me on!' Goofy feel on his knes and said, 'Dude stop turning me on!' Goofy feel on his knes and said, 'Dude stop turning me on!' Goofy feel on his knes and said, 'Dude stop turning me on!' Goofy feel on his knes and said, 'Dude stop turning me on!' Goofy feel on his knes and said, 'Dude stop turning me on!' Goofy feel on his knes and said, 'Dude stop turning me on!' Goofy feel on his knes and said, 'Dude stop turning me on!' Goofy feel on his knes and said, 'Dude stop turning me on!' Goofy feel on his knes and said, 'Dude stop turning me on!' Goofy feel on his knes and said, 'Dude stop turning me on!'",

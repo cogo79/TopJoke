@@ -5,7 +5,7 @@ define([], function(){
 		},
 		defaults: {
 			"points" : 0,
-			"ratorPersonId" : null
+			"ratorPersonCid" : null
 		}
 	});
 });
