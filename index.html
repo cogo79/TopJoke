@@ -40,18 +40,16 @@
 		</div>
 	</div>
 
-	<ul id="joke-list" class="list list-group"></ul>
+	<div class="joke-list"></div>
 
 	<script id="joke_template" type="text/template" >
-		<li class="list-group-item">
-			<div class="list-group">
-				<a href="#" class="list-group-item disabled jokeTitle">
-					<%= title %>
-				</a>
-				<a href="#" class="list-group-item"><%= joke %></a>
-				<a href="#" class="list-group-item"><%= jokeAuthor %></a>
-			</div>
-		</li>
+		<div class="list-group miguels-customization">
+			<a href="#" class="list-group-item disabled jokeTitle">
+				<%= title %>
+			</a>
+			<a href="#" class="list-group-item"><%= joke %></a>
+			<a href="#" class="list-group-item"><%= jokeAuthor %></a>
+		</div>
 	</script>
 
 	<!-- Latest compiled and minified JavaScript -->

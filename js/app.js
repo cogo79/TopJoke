@@ -106,6 +106,6 @@ require(['app/model/Group', 'app/model/Person', 'app/model/Joke', 'app/model/Rat
 		title = joke.get('title');
 		jokeStr = joke.get('joke');
 
-		new JokeView({ el: $("#joke-list"), title: title, joke: jokeStr});		
+		new JokeView({ el: $(".joke-list"), title: title, joke: jokeStr});		
 	});
 });

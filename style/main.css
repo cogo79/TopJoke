@@ -7,7 +7,7 @@ body, html {
 	position: absolute;
 }
 
-.list{
+.joke-list{
     height: calc(100% - 60px);
     overflow-y:scroll;
 }
@@ -16,8 +16,8 @@ body, html {
 	background-color: black;
 }
 
-.list-group {
-	margin-bottom: 3;
+.miguels-customization {
+	margin: 10px;
 }
 
 
