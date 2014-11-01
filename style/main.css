@@ -12,7 +12,9 @@ body, html {
     overflow-y:scroll;
 }
 
-
+.jokeTitle {
+	background-color: black;
+}
 
 
 
