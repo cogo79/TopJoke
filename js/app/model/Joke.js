@@ -12,7 +12,7 @@ define(['app/model/Rating', 'app/model/Comment'], function(Rating, Comment){
 			});
 			this.set('comments', new Comments);
 
-			console.log('New joke created');
+			console.log('New joke created. Cid: ', this.cid);
 		},
 		ratings: function() {
 			return this.get('ratings');

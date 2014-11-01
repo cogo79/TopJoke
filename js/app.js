@@ -1,4 +1,7 @@
-require(['app/model/Group', 'app/model/Person', 'app/model/Joke', 'app/model/Rating', 'app/model/Comment', 'app/controller'], function(Group, Person, Joke, Rating, Comment, controller) {
+require(['app/model/Group', 'app/model/Person', 'app/model/Joke', 'app/model/Rating', 'app/model/Comment', 'app/controller', 'Global'], function(Group, Person, Joke, Rating, Comment, controller, Global) {
+
+	Global.setMainGroup(new Group({"groupName" : "mainGroup"}));
+
 	var miguel = new Person({
 		"username" : "migobigo",
 		"password" : "blabla222",
@@ -25,12 +28,11 @@ require(['app/model/Group', 'app/model/Person', 'app/model/Joke', 'app/model/Rat
 		"email" : "pelle.berggren@aftonbladet.se"
 	});
 
-	var mainGroup = new Group({"groupName" : "mainGroup"});
-	mainGroup.persons().add(miguel);
-	mainGroup.persons().add(jenny);
-	mainGroup.persons().add(micke);
-	mainGroup.persons().add(pelle);
-	mainGroup.persons().add(cissela);
+	Global.mainGroup().persons().add(miguel);
+	Global.mainGroup().persons().add(jenny);
+	Global.mainGroup().persons().add(micke);
+	Global.mainGroup().persons().add(pelle);
+	Global.mainGroup().persons().add(cissela);
 
 	var roosterGang = new Group({"groupName" : "Rooster gang"});
 	roosterGang.persons().add(miguel);
@@ -41,44 +43,38 @@ require(['app/model/Group', 'app/model/Person', 'app/model/Joke', 'app/model/Rat
 		"joke" : "Goofy feel on his knes and said, 'Dude stop turning me on!' Goofy feel on his knes and said, 'Dude stop turning me on!' Goofy feel on his knes and said, 'Dude stop turning me on!' Goofy feel on his knes and said, 'Dude stop turning me on!' Goofy feel on his knes and said, 'Dude stop turning me on!' Goofy feel on his knes and said, 'Dude stop turning me on!' Goofy feel on his knes and said, 'Dude stop turning me on!' Goofy feel on his knes and said, 'Dude stop turning me on!' Goofy feel on his knes and said, 'Dude stop turning me on!' Goofy feel on his knes and said, 'Dude stop turning me on!' Goofy feel on his knes and said, 'Dude stop turning me on!' Goofy feel on his knes and said, 'Dude stop turning me on!' Goofy feel on his knes and said, 'Dude stop turning me on!' Goofy feel on his knes and said, 'Dude stop turning me on!'",
 		"date" : Date()
 	});
-	miguel.jokes().add(joke);
-	mainGroup.jokes().add(joke);
-
+	Global.addJokeToPerson(miguel, joke);
+	
 	joke = new Joke({"title" : "Rambo trufer",
 		"joke" : "And then Rambo drew his gun and said 'Hasta la vista baby'. And terminator came and said 'Oh I´m shaking!'",
 		"date" : Date()
 	});
-	miguel.jokes().add();
-	mainGroup.jokes().add(joke);
-
+	Global.addJokeToPerson(miguel, joke);
+	
 	joke = new Joke({"title" : "Super Mario lovers",
 		"joke" : "Mario jumped out of the screan and said to little Joe, 'Wanna go out and pick som mushrooms?'",
 		"date" : Date()
 	});
-	miguel.jokes().add(joke);
-	mainGroup.jokes().add(joke);
-
+	Global.addJokeToPerson(miguel, joke);
+	
 	joke = new Joke({"title" : "Mo sistas",
 		"joke" : "Jenifer just smiled and said to Mary. 'How´s you mo Joe runin?'",
 		"date" : Date()
 	});
-	pelle.jokes().add(joke);
-	mainGroup.jokes().add(joke);
-
+	Global.addJokeToPerson(pelle, joke);
+	
 	joke = new Joke({"title" : "Zeldas last wish",
-		"joke" : "As he finaly realized that his days where conted and the end was near, Billy droped by and said: 'Cheer up dud! I brought you some extra life. That will keep you going for at least another couple of days'",
+		"joke" : "As he finaly realized that his days where conted and the end was near, Billy droped by and said: 'Cheer up dude! I brought you some extra life. That will keep you going for at least another couple of days'",
 		"date" : Date()
 	});
-	micke.jokes().add(joke);
-	mainGroup.jokes().add(joke);
-
+	Global.addJokeToPerson(micke, joke);
+	
 	joke = new Joke({"title" : "Speed way",
 		"joke" : "Is this a joking site? Well hell! Speed way is just such a joke that you don´t even need to joke about it.",
 		"date" : Date()
 	});
-	micke.jokes().add(joke);
-	mainGroup.jokes().add(joke);
-
+	Global.addJokeToPerson(micke, joke);
+	
 	JokeView = Backbone.View.extend({
 		template: _.template($("#joke_template").html()),
 		title: '', joke: '', jokeAuthor: '',
@@ -99,10 +95,11 @@ require(['app/model/Group', 'app/model/Person', 'app/model/Joke', 'app/model/Rat
         }
     });
 
-	mainGroup.jokes().each(function(joke) {
+	Global.mainGroup().jokes().each(function(joke) {
 		var title, joke, jokeAuthor;
 		title = joke.get('title');
 		jokeStr = joke.get('joke');
+
 		new JokeView({ el: $("#joke-list"), title: title, joke: jokeStr});		
 	});
 });

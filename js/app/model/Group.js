@@ -22,7 +22,7 @@ define(['app/model/Person', 'app/model/Joke', 'app/model/Rating', 'app/model/Com
 			});
 			this.set('persons', new Persons);
 
-			console.log('New group created');
+			console.log('New group created. Cid: ', this.cid);
 		},
 		defaults: {
 			"groupName":  "0"
