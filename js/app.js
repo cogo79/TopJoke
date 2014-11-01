@@ -36,52 +36,73 @@ require(['app/model/Group', 'app/model/Person', 'app/model/Joke', 'app/model/Rat
 	roosterGang.persons().add(miguel);
 	roosterGang.persons().add(jenny);
 
-	var joke1 = new Joke({"title" : "Goofer",
+	var joke;
+	joke = new Joke({"title" : "Goofer",
 		"joke" : "Goofy feel on his knes and said, 'Dude stop turning me on!' Goofy feel on his knes and said, 'Dude stop turning me on!' Goofy feel on his knes and said, 'Dude stop turning me on!' Goofy feel on his knes and said, 'Dude stop turning me on!' Goofy feel on his knes and said, 'Dude stop turning me on!' Goofy feel on his knes and said, 'Dude stop turning me on!' Goofy feel on his knes and said, 'Dude stop turning me on!' Goofy feel on his knes and said, 'Dude stop turning me on!' Goofy feel on his knes and said, 'Dude stop turning me on!' Goofy feel on his knes and said, 'Dude stop turning me on!' Goofy feel on his knes and said, 'Dude stop turning me on!' Goofy feel on his knes and said, 'Dude stop turning me on!' Goofy feel on his knes and said, 'Dude stop turning me on!' Goofy feel on his knes and said, 'Dude stop turning me on!'",
 		"date" : Date()
 	});
-	console.log("joke1.toJSON() --> ", joke1.toJSON());
-	miguel.jokes().add(joke1);
-	console.log("miguel and his jokes: ", miguel);
+	miguel.jokes().add(joke);
+	mainGroup.jokes().add(joke);
+
+	joke = new Joke({"title" : "Rambo trufer",
+		"joke" : "And then Rambo drew his gun and said 'Hasta la vista baby'. And terminator came and said 'Oh I´m shaking!'",
+		"date" : Date()
+	});
+	miguel.jokes().add();
+	mainGroup.jokes().add(joke);
+
+	joke = new Joke({"title" : "Super Mario lovers",
+		"joke" : "Mario jumped out of the screan and said to little Joe, 'Wanna go out and pick som mushrooms?'",
+		"date" : Date()
+	});
+	miguel.jokes().add(joke);
+	mainGroup.jokes().add(joke);
+
+	joke = new Joke({"title" : "Mo sistas",
+		"joke" : "Jenifer just smiled and said to Mary. 'How´s you mo Joe runin?'",
+		"date" : Date()
+	});
+	pelle.jokes().add(joke);
+	mainGroup.jokes().add(joke);
+
+	joke = new Joke({"title" : "Zeldas last wish",
+		"joke" : "As he finaly realized that his days where conted and the end was near, Billy droped by and said: 'Cheer up dud! I brought you some extra life. That will keep you going for at least another couple of days'",
+		"date" : Date()
+	});
+	micke.jokes().add(joke);
+	mainGroup.jokes().add(joke);
+
+	joke = new Joke({"title" : "Speed way",
+		"joke" : "Is this a joking site? Well hell! Speed way is just such a joke that you don´t even need to joke about it.",
+		"date" : Date()
+	});
+	micke.jokes().add(joke);
+	mainGroup.jokes().add(joke);
 
 	JokeView = Backbone.View.extend({
 		template: _.template($("#joke_template").html()),
-		initialize: function(){
+		title: '', joke: '', jokeAuthor: '',
+		initialize: function(options){
+
+			this.title = options.title;
+			this.joke = options.joke;
+			this.jokeAuthor = options.jokeAuthor;
+			
 			this.render();
 		},
 		render: function(){
-            var variables = { title: joke1.get("title"), joke: joke1.get("joke"),
-             jokeAuthor: miguel.get("username") };
+
+
+            var variables = { title: this.title, joke: this.joke, jokeAuthor: this.jokeAuthor };
     		var html = this.template(variables);
 			$(this.el).append(html);
         }
     });
 
-	var joke_view = new JokeView({ el: $("#joke-list") });
-	new JokeView({ el: $("#joke-list") });
-	new JokeView({ el: $("#joke-list") });
-	new JokeView({ el: $("#joke-list") });
-	new JokeView({ el: $("#joke-list") });
-	new JokeView({ el: $("#joke-list") });
-	new JokeView({ el: $("#joke-list") });
-	new JokeView({ el: $("#joke-list") });
-	new JokeView({ el: $("#joke-list") });
-	new JokeView({ el: $("#joke-list") });
-	new JokeView({ el: $("#joke-list") });
-	new JokeView({ el: $("#joke-list") });
-	new JokeView({ el: $("#joke-list") });
-	new JokeView({ el: $("#joke-list") });
-	new JokeView({ el: $("#joke-list") });
-	new JokeView({ el: $("#joke-list") });
-
-	console.log("How are we doing now?");
-	/*
-	console.log("count: ", group.persons().length);
-	console.log(group);
-
-	miguel.destroy();
-	console.log("count: ", group.persons().length);
-	*/
-
-
+	mainGroup.jokes().each(function(joke) {
+		var title, joke, jokeAuthor;
+		title = joke.get('title');
+		jokeStr = joke.get('joke');
+		new JokeView({ el: $("#joke-list"), title: title, joke: jokeStr});		
+	});
 });

@@ -16,7 +16,7 @@ define(['app/model/Joke', 'app/model/Group', 'app/model/Rating'], function(Joke,
 			});
 			this.set('ratings', new Ratings);
 
-			console.log('New group created');
+			console.log('New person created');
 		},
 		defaults: {
 			"username" : null,
