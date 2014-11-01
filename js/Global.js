@@ -5,7 +5,6 @@ define([], function(){
 		addJokeToPerson : function(person, joke) {
 			joke.set({"jokePersonCid" : person.cid});
 			person.jokes().add(joke);
-			mainGroup.jokes().add(joke);
 		},
 		setMainGroup: function(group) {
 			if (mainGroupIsSet == false) {

@@ -44,36 +44,42 @@ require(['app/model/Group', 'app/model/Person', 'app/model/Joke', 'app/model/Rat
 		"date" : Date()
 	});
 	Global.addJokeToPerson(miguel, joke);
+	Global.mainGroup().jokes().add(joke);
 	
 	joke = new Joke({"title" : "Rambo trufer",
 		"joke" : "And then Rambo drew his gun and said 'Hasta la vista baby'. And terminator came and said 'Oh I´m shaking!'",
 		"date" : Date()
 	});
 	Global.addJokeToPerson(miguel, joke);
+	Global.mainGroup().jokes().add(joke);
 	
 	joke = new Joke({"title" : "Super Mario lovers",
 		"joke" : "Mario jumped out of the screan and said to little Joe, 'Wanna go out and pick som mushrooms?'",
 		"date" : Date()
 	});
 	Global.addJokeToPerson(miguel, joke);
-	
+	Global.mainGroup().jokes().add(joke);
+
 	joke = new Joke({"title" : "Mo sistas",
 		"joke" : "Jenifer just smiled and said to Mary. 'How´s you mo Joe runin?'",
 		"date" : Date()
 	});
 	Global.addJokeToPerson(pelle, joke);
+	Global.mainGroup().jokes().add(joke);
 	
 	joke = new Joke({"title" : "Zeldas last wish",
 		"joke" : "As he finaly realized that his days where conted and the end was near, Billy droped by and said: 'Cheer up dude! I brought you some extra life. That will keep you going for at least another couple of days'",
 		"date" : Date()
 	});
 	Global.addJokeToPerson(micke, joke);
+	Global.mainGroup().jokes().add(joke);
 	
 	joke = new Joke({"title" : "Speed way",
 		"joke" : "Is this a joking site? Well hell! Speed way is just such a joke that you don´t even need to joke about it.",
 		"date" : Date()
 	});
 	Global.addJokeToPerson(micke, joke);
+	Global.mainGroup().jokes().add(joke);
 	
 	JokeView = Backbone.View.extend({
 		template: _.template($("#joke_template").html()),
