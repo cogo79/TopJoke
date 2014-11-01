@@ -16,7 +16,9 @@ body, html {
 	background-color: black;
 }
 
-
+.list-group {
+	margin-bottom: 3;
+}
 
 
 
