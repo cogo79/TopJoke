@@ -23,7 +23,7 @@ define(['app/model/Rating', 'app/model/Comment'], function(Rating, Comment){
 		defaults: {
 			"title" : "0",
 			"joke" : "0",
-			"jokePersonCid" : null,
+			"PersonUsername" : null,
 			"date" : null
 		}
 

@@ -37,6 +37,7 @@ require(['app/model/Group', 'app/model/Person', 'app/model/Joke', 'app/model/Rat
 	var roosterGang = new Group({"groupName" : "Rooster gang"});
 	roosterGang.persons().add(miguel);
 	roosterGang.persons().add(jenny);
+	Global.groups().add(roosterGang);
 
 	var joke;
 	joke = new Joke({"title" : "Goofer",
@@ -105,7 +106,7 @@ require(['app/model/Group', 'app/model/Person', 'app/model/Joke', 'app/model/Rat
 		var title, joke, jokeAuthor;
 		title = joke.get('title');
 		jokeStr = joke.get('joke');
-
-		new JokeView({ el: $(".joke-list"), title: title, joke: jokeStr});		
+		jokeAuthor = joke.get('PersonUsername');
+		new JokeView({ el: $(".joke-list"), title: title, joke: jokeStr, jokeAuthor: jokeAuthor});		
 	});
 });

@@ -20,7 +20,6 @@
 	</script>
 </head>
 <body>
-	
 	<div class="navbar navbar-inverse navbar-static-top">
 		<div class="container">
 			<a href="#" class="navbar-brand">TopJoke</a>
@@ -33,14 +32,18 @@
 
 			<div class="collapse navbar-collapse navHeaderCollapse">
 				<ul class="nav navbar-nav navbar-right">
+					<li><a href="#">Home</a></li>
 					<li><a href="#">About</a></li>
 					<li id="signIn_SignOut"><a href="#">Sign in</a></li>
+					<li id="createAccount"><a href="#">Create account</a></li>
 				</ul>
 			</div>
 		</div>
 	</div>
 
-	<div class="joke-list"></div>
+	<div class="joke-list">
+		
+	</div>
 
 	<script id="joke_template" type="text/template" >
 		<div class="list-group miguels-customization">
@@ -52,7 +55,15 @@
 		</div>
 	</script>
 
+	<script id="aboutPage" type="text/template" >
+		<%= aboutPageText %>
+	</script>
+
+
+
 	<!-- Latest compiled and minified JavaScript -->
 	<script src="js/lib/bootstrap.min.js"></script>
 </body>
 </html>
+
+<!-- http://stackoverflow.com/questions/1987524/turn-a-number-into-star-rating-display-using-jquery-and-css/1987545#1987545 -->
