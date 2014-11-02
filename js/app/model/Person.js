@@ -33,7 +33,11 @@ define(['app/model/Joke', 'app/model/Group', 'app/model/Rating'], function(Joke,
       	},
       	ratings: function() {
       		return this.get('ratings');
-      	},
+      	}
+    });
+});
+/*
+,
 				add: function(models, options) {
 					/*
 					models.each(function(model) {
@@ -41,17 +45,16 @@ define(['app/model/Joke', 'app/model/Group', 'app/model/Rating'], function(Joke,
 						console.log("Joke model having attribute 'jokePersonCid' set to: ", this.cid);
 					});
 
-			*/console.log("models: ", models); console.log("cid: ", this.cid);
+		//	console.log("models: ", models); console.log("cid: ", this.cid);
 			/*
 					for (var i = 0; i < models.length; i++) {
 						models[i].set({'jokePersonCid' : this.cid});
 						console.log("Joke model having attribute 'jokePersonCid' set to: ", this.cid);
 					};
-					*/
+					* /
 					models.set({'jokePersonCid' : this.cid});
 					console.log("Joke model having attribute 'jokePersonCid' set to: ", this.cid);
 					var addOptions = {add: true, remove: false};
 					return this.set(models, _.extend({merge: false}, options, addOptions));
 				}
-      });
-});
+				*/

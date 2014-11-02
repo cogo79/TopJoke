@@ -1,4 +1,4 @@
-require(['app/model/Group', 'app/model/Person', 'app/model/Joke', 'app/model/Rating', 'app/model/Comment', 'app/controller', 'Global'], function(Group, Person, Joke, Rating, Comment, controller, Global) {
+require(['app/model/Group', 'app/model/Person', 'app/model/Joke', 'app/model/Rating', 'app/model/Comment', 'app/controller', 'app/view/JokeView', 'Global'], function(Group, Person, Joke, Rating, Comment, controller, JokeView, Global) {
 
 	Global.setMainGroup(new Group({"groupName" : "mainGroup"}));
 
@@ -81,26 +81,6 @@ require(['app/model/Group', 'app/model/Person', 'app/model/Joke', 'app/model/Rat
 	});
 	Global.addJokeToPerson(micke, joke);
 	Global.mainGroup().jokes().add(joke);
-	
-	JokeView = Backbone.View.extend({
-		template: _.template($("#joke_template").html()),
-		title: '', joke: '', jokeAuthor: '',
-		initialize: function(options){
-
-			this.title = options.title;
-			this.joke = options.joke;
-			this.jokeAuthor = options.jokeAuthor;
-			
-			this.render();
-		},
-		render: function(){
-
-
-            var variables = { title: this.title, joke: this.joke, jokeAuthor: this.jokeAuthor };
-    		var html = this.template(variables);
-			$(this.el).append(html);
-        }
-    });
 
 	Global.mainGroup().jokes().each(function(joke) {
 		var title, joke, jokeAuthor;
