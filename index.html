@@ -42,21 +42,26 @@
 	</div>
 
 	<div class="joke-list">
-		
+
 	</div>
 
 	<script id="joke_template" type="text/template" >
-		<div class="list-group miguels-customization">
-			<a href="#" class="list-group-item disabled jokeTitle">
-				<%= title %>
-			</a>
-			<a href="#" class="list-group-item"><%= joke %></a>
-			<a href="#" class="list-group-item"><%= jokeAuthor %></a>
+		<div class="panel panel-default miguels-customization">
+			<div class="panel-heading">
+				<h3 class="panel-title"><%= title %></h3>
+			</div>
+			<div class="panel-body">
+				<%= joke %>
+			</div>
+			<div class="panel-footer">
+				<%= jokeAuthor %>
+			</div>
 		</div>
+
 	</script>
 
 	<script id="aboutPage" type="text/template" >
-		<%= aboutPageText %>
+	<%= aboutPageText %>
 	</script>
 
 
@@ -67,3 +72,4 @@
 </html>
 
 <!-- http://stackoverflow.com/questions/1987524/turn-a-number-into-star-rating-display-using-jquery-and-css/1987545#1987545 -->
+<!--   -->
