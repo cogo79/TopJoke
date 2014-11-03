@@ -1,5 +1,7 @@
 require(['app/model/Group', 'app/model/Person', 'app/model/Joke', 'app/model/Rating', 'app/model/Comment', 'app/controller', 'app/view/JokeView', 'Global'], function(Group, Person, Joke, Rating, Comment, controller, JokeView, Global) {
 
+
+	
 	Global.setMainGroup(new Group({"groupName" : "mainGroup"}));
 
 	var miguel = new Person({

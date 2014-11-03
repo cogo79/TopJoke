@@ -9,6 +9,8 @@
 
 	<link rel="stylesheet" href="style/custom.css">
 
+	<link href="style/signin.css" rel="stylesheet">
+
 	<script src="js/lib/jquery.min.js"></script>
 	<script src="js/lib/underscore.js"></script>
 	<script src="js/lib/backbone.js"></script>
@@ -34,7 +36,7 @@
 				<ul class="nav navbar-nav navbar-right">
 					<li class="home"><a href="#">Home</a></li>
 					<li class="about"><a href="#">About</a></li>
-					<li class="signIn_SignOut"><a href="#">Sign in</a></li>
+					<li class="signIn_SignOut"><a href="#" >Sign in</a></li>
 					<li class="createAccount"><a href="#">Create account</a></li>
 				</ul>
 			</div>
@@ -63,7 +65,19 @@
 		<%= aboutPageText %>
 	</script>
 
-
+	<script id="login_template" type="text/template">
+		<form class="form-signin" role="form">
+			<h2 class="form-signin-heading">Please sign in</h2>
+			<input type="email" class="form-control" placeholder="Email address" required autofocus>
+			<input type="password" class="form-control" placeholder="Password" required>
+			<div class="checkbox">
+				<label>
+				<input type="checkbox" value="remember-me"> Remember me
+				</label>
+			</div>
+			<button class="btn btn-lg btn-primary btn-block" type="submit">Sign in</button>
+		</form>
+	</script>
 
 	<!-- Latest compiled and minified JavaScript -->
 	<script src="js/lib/bootstrap.min.js"></script>
