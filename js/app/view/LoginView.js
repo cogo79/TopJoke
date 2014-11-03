@@ -10,5 +10,4 @@ define([], function() {
 			$(this.el).append(html);
         }
     });
-
 })

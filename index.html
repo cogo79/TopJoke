@@ -39,7 +39,14 @@
 					<li class="signIn_SignOut"><a href="#" >Sign in</a></li>
 					<li class="createAccount"><a href="#">Create account</a></li>
 				</ul>
+				<form class="navbar-form navbar-right" role="search">
+					<a class="form-group">
+						<input type="text" class="form-control" placeholder="Search">
+					</a>
+					<button type="submit" class="btn btn-default">Submit</button>
+				</form>
 			</div>
+
 		</div>
 	</div>
 
@@ -61,7 +68,7 @@
 		</div>
 	</script>
 
-	<script id="aboutPage" type="text/template" >
+	<script id="aboutPage" type="text/template">
 		<%= aboutPageText %>
 	</script>
 
@@ -77,6 +84,20 @@
 			</div>
 			<button class="btn btn-lg btn-primary btn-block" type="submit">Sign in</button>
 		</form>
+	</script>
+
+	<script id="navbar_right_when_NOT_loged_in" type="text/template">
+		<li class="home"><a href="#">Home</a></li>
+		<li class="about"><a href="#">About</a></li>
+		<li class="signIn"><a href="#" >Sign in</a></li>
+		<li class="createAccount"><a href="#">Create account</a></li>
+	</script>
+
+	<script id="navbar_right_when_loged_in" type="text/template">
+		<li class="home"><a href="#">Home</a></li>
+		<li class="about"><a href="#">About</a></li>
+		<li class="groups"><a href="#">Groups</a></li>
+		<li class="signOut"><a href="#">Sign out</a></li>
 	</script>
 
 	<!-- Latest compiled and minified JavaScript -->

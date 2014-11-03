@@ -23,7 +23,10 @@ define(['app/model/Joke', 'app/model/Group', 'app/model/Rating'], function(Joke,
 			"password" : null,
 			"email" : null,
 			"bio" : "",
-			"loggedIn" : false
+			"loggedIn" : false,
+			"first name" : null,
+			"surname" : null,
+			"remember me": false
 		},
       	jokes: function() {
       		return this.get('jokes');

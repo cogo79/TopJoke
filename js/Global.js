@@ -1,10 +1,11 @@
-define(['app/model/Group'], function(Group){
+define(['app/model/Group', 'app/model/Person'], function(Group, Person){
 	var mainGroup;
 	var collection = Backbone.Collection.extend({
 		model: Group
 	});
 	var groups = new collection;
 	var mainGroupIsSet = false;
+	var logedInPerson;
 	return {// public interface
 		addJokeToPerson : function(person, joke) {
 			joke.set({"PersonUsername" : person.get('username')});
@@ -22,6 +23,12 @@ define(['app/model/Group'], function(Group){
 		},
 		groups: function() {
 			return groups;
+		},
+		setLogedInPerson: function(person) {
+			logedInPerson = person;
+		},
+		logedInPerson: function() {
+			return logedInPerson;
 		}
 	};
 });

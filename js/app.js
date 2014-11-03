@@ -30,6 +30,15 @@ require(['app/model/Group', 'app/model/Person', 'app/model/Joke', 'app/model/Rat
 		"email" : "pelle.berggren@aftonbladet.se"
 	});
 
+	/*
+	Global.setLogedInPerson(miguel);
+	console.log("Loged in person: ", Global.logedInPerson());
+	miguel.destroy({success: function(model, response) {
+		Global.setLogedInPerson(null);
+	}});
+	console.log("Loged in person: ", Global.logedInPerson());
+	*/
+
 	Global.mainGroup().persons().add(miguel);
 	Global.mainGroup().persons().add(jenny);
 	Global.mainGroup().persons().add(micke);
