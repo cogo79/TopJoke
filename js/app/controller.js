@@ -13,7 +13,7 @@ define(['Global', 'app/view/JokeView', 'app/view/AboutView', 'app/view/LoginView
 			new JokeView({ el: $(".joke-list"), title: title, joke: jokeStr, jokeAuthor: jokeAuthor});		
 		});
 	});
-	$('.signIn_SignOut').click(function() {
+	$('.signIn').click(function() {
 		$('.joke-list').html('');
 		new LoginView({el: $('.joke-list')});
 	});

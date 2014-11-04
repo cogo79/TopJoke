@@ -15,13 +15,15 @@ define(['Global', 'app/model/Person'], function(Global, Person){
 					password:$('#login_password_input').val(),
 				});
 				if (loginPerson) {
-					console.log("" + loginPerson.get('username') + " loged in.");
-					console.log("$('#remember-me').is(':checked ---> ')" ,$('#remember-me').is(':checked'));
 					loginPerson.set({
 						rememberMe : $('#remember-me').is(':checked')
 					});
+					Global.setLogedInPerson(loginPerson);
+					console.log('Global.setLogedInPerson(loginPerson); ', Global.logedInPerson(loginPerson));
+					$('.miguels-custom-navbar-right').html('');
+					$('.miguels-custom-navbar-right').html( _.template($("#navbar_right_when_loged_in").html()) );
 				}
-				console.log('loginPerson: ', loginPerson);
+				
 				/*
 				Global.mainGroup().persons().each(function(person) {
 					console.log('Global.mainGroup().persons().each: ', person);
