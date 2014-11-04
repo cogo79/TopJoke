@@ -29,7 +29,7 @@ require(['app/model/Group', 'app/model/Person', 'app/model/Joke', 'app/model/Rat
 		"password" : "jajag heter pelle tamefan",
 		"email" : "pelle.berggren@aftonbladet.se"
 	});
-
+	
 	/*
 	Global.setLogedInPerson(miguel);
 	console.log("Loged in person: ", Global.logedInPerson());
@@ -38,7 +38,7 @@ require(['app/model/Group', 'app/model/Person', 'app/model/Joke', 'app/model/Rat
 	}});
 	console.log("Loged in person: ", Global.logedInPerson());
 	*/
-
+	
 	Global.mainGroup().persons().add(miguel);
 	Global.mainGroup().persons().add(jenny);
 	Global.mainGroup().persons().add(micke);
