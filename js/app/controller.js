@@ -18,3 +18,27 @@ define(['Global', 'app/view/JokeView', 'app/view/AboutView', 'app/view/LoginView
 		new LoginView({el: $('.joke-list')});
 	});
 });
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
