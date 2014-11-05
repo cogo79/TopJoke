@@ -35,4 +35,4 @@ define(['Global', 'app/model/Person', 'app/Controller', 'app/view/JokeView', 'ap
 			});
 		}
 	});
-})
+});
