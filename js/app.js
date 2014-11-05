@@ -1,4 +1,4 @@
-require(['app/model/Group', 'app/model/Person', 'app/model/Joke', 'app/model/Rating', 'app/model/Comment', 'app/controller', 'app/view/JokeView', 'Global'], function(Group, Person, Joke, Rating, Comment, controller, JokeView, Global) {
+require(['app/model/Group', 'app/model/Person', 'app/model/Joke', 'app/model/Rating', 'app/model/Comment', 'app/view/JokeView', 'Global', 'app/Controller', 'app/view/LoginView'], function(Group, Person, Joke, Rating, Comment, JokeView, Global, Controller, LoginView) {
 
 
 	
@@ -100,4 +100,5 @@ require(['app/model/Group', 'app/model/Person', 'app/model/Joke', 'app/model/Rat
 		jokeAuthor = joke.get('PersonUsername');
 		new JokeView({ el: $(".joke-list"), title: title, joke: jokeStr, jokeAuthor: jokeAuthor});		
 	});
+	console.log('controller: ', Controller);
 });

@@ -1,4 +1,4 @@
-define(['Global', 'app/model/Person'], function(Global, Person){
+define(['Global', 'app/model/Person', 'app/Controller', 'app/view/JokeView', 'app/model/Joke'], function(Global, Person, Controller, JokeView, Joke){
 	return Backbone.View.extend({
 		template: _.template($("#login_template").html()),
 		initialize: function(){
@@ -21,7 +21,9 @@ define(['Global', 'app/model/Person'], function(Global, Person){
 					Global.setLogedInPerson(loginPerson);
 					console.log('Global.setLogedInPerson(loginPerson); ', Global.logedInPerson(loginPerson));
 					$('.miguels-custom-navbar-right').html('');
-					$('.miguels-custom-navbar-right').html( _.template($("#navbar_right_when_loged_in").html()) );
+					$('.miguels-custom-navbar-right').html(_.template($("#navbar_right_when_loged_in").html()));
+					console.log(Controller);
+					Controller.goToHome();
 				}
 				
 				/*
