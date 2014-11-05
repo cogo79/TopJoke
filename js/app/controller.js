@@ -1,11 +1,4 @@
-define(function(require){
-
-	var Global = require('Global');
-	var Group = require('app/model/Group');
-	var Person = require('app/model/Person');
-	var Joke = require('app/model/Joke');
-	var JokeView = require('app/view/JokeView');
-
+define(['Global', 'app/model/Group', 'app/model/Person', 'app/model/Joke', 'app/view/JokeView'], function(Global, Group, Person, Joke, JokeView){
 	Global.setMainGroup(new Group({"groupName" : "mainGroup"}));
 
 	var miguel = new Person({
@@ -33,15 +26,6 @@ define(function(require){
 		"password" : "jajag heter pelle tamefan",
 		"email" : "pelle.berggren@aftonbladet.se"
 	});
-	
-	/*
-	Global.setLogedInPerson(miguel);
-	console.log("Loged in person: ", Global.logedInPerson());
-	miguel.destroy({success: function(model, response) {
-		Global.setLogedInPerson(null);
-	}});
-	console.log("Loged in person: ", Global.logedInPerson());
-	*/
 	
 	Global.mainGroup().persons().add(miguel);
 	Global.mainGroup().persons().add(jenny);
