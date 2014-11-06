@@ -18,6 +18,9 @@ define(['app/view/AboutView', 'Global', 'app/view/JokeView', 'app/view/LoginView
 			$('.joke-list').html('');
 			new LoginView({el: $('.joke-list')});
 		});
+		$('.signOut').click(function() {
+			
+		});
 	}
 	update();
 	return {

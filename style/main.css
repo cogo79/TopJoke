@@ -8,7 +8,7 @@ body, html {
 }
 
 .joke-list{
-    height: calc(100% - 60px);
+    height: calc(100% - 51px);
     overflow-y:scroll;
 }
 
