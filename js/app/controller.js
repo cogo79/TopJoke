@@ -88,21 +88,7 @@ define(['Global', 'app/model/Group', 'app/model/Person', 'app/model/Joke', 'app/
 		jokeAuthor = joke.get('PersonUsername');
 		new JokeView({ el: $(".joke-list"), title: title, joke: jokeStr, jokeAuthor: jokeAuthor});		
 	});
-
-
-	var goToHomee = function() {
-		$('.joke-list').html('');
-		Global.mainGroup().jokes().each(function(joke) {
-			var title, joke, jokeAuthor;
-			title = joke.get('title');
-			jokeStr = joke.get('joke');
-			jokeAuthor = joke.get('PersonUsername');
-			new JokeView({ el: $(".joke-list"), title: title, joke: jokeStr, jokeAuthor: jokeAuthor});		
-		});
-	};
-	return {// public interface
-		goToHome : goToHomee
-	};
+	
 });
 
 

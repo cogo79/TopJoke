@@ -19,8 +19,8 @@ define(['Global', 'app/Controller'], function(Global, Controller){
 					Global.setLogedInPerson(loginPerson);
 					$('.miguels-custom-navbar-right').html('');
 					$('.miguels-custom-navbar-right').html(_.template($("#navbar_right_when_loged_in").html()));
-					Controller.goToHome();
 					require(['app/view/view'], function(view) {
+						view.goToHome();
 						view.update();
 					});
 				}
