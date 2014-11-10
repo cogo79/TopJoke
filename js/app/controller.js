@@ -1,6 +1,8 @@
-define(['Global', 'app/model/Group', 'app/model/Person', 'app/model/Joke', 'app/view/JokeView'], function(Global, Group, Person, Joke, JokeView){
-	Global.setMainGroup(new Group({"groupName" : "mainGroup"}));
+define(['Global', 'app/model/Group', 'app/model/Person', 'app/model/Joke', 'app/view/JokeView', 'app/view/view', 'app/view/LoginView'], function(Global, Group, Person, Joke, JokeView, view, LoginView){
+	console.log('Contorller.js');
 
+	Global.setMainGroup(new Group({"groupName" : "mainGroup"}));
+	
 	var miguel = new Person({
 		"username" : "migobigo",
 		"password" : "blabla222",
@@ -81,6 +83,7 @@ define(['Global', 'app/model/Group', 'app/model/Person', 'app/model/Joke', 'app/
 	Global.addJokeToPerson(micke, joke);
 	Global.mainGroup().jokes().add(joke);
 
+/*
 	Global.mainGroup().jokes().each(function(joke) {
 		var title, joke, jokeAuthor;
 		title = joke.get('title');
@@ -88,7 +91,10 @@ define(['Global', 'app/model/Group', 'app/model/Person', 'app/model/Joke', 'app/
 		jokeAuthor = joke.get('PersonUsername');
 		new JokeView({ el: $(".joke-list"), title: title, joke: jokeStr, jokeAuthor: jokeAuthor});		
 	});
-	
+*/
+	$('.miguels-custom-navbar-right').html(_.template($("#navbar_right_when_NOT_loged_in").html()));
+	view.goToHome();
+	view.update();
 });
 
 
