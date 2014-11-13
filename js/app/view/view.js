@@ -31,7 +31,7 @@ define(['app/view/AboutView', 'Global', 'app/view/JokeView', 'app/view/LoginView
 			}
 		});
 		$('.signOut').click(function() {
-			console.log("User " + Global.logedInPerson().get('username') + " signed out.");
+			console.log("User \"" + Global.logedInPerson().get('username') + "\" signed out.");
 			Global.setLogedInPerson(null);
 			$('.miguels-custom-navbar-right').html('');
 			$('.miguels-custom-navbar-right').html(_.template($("#navbar_right_when_NOT_loged_in").html()));
