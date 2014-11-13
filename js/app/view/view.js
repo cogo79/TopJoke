@@ -15,7 +15,7 @@ define(['app/view/AboutView', 'Global', 'app/view/JokeView', 'app/view/LoginView
 			new LoginView({el: $('.joke-list')});
 		});
 		$('.signOut').click(function() {
-			console.log("$('.signOut').click(function() {");
+			console.log("User " + Global.logedInPerson().get('username') + " signed out.");
 			Global.setLogedInPerson(null);
 			$('.miguels-custom-navbar-right').html('');
 			$('.miguels-custom-navbar-right').html(_.template($("#navbar_right_when_NOT_loged_in").html()));
@@ -32,20 +32,13 @@ define(['app/view/AboutView', 'Global', 'app/view/JokeView', 'app/view/LoginView
 					rememberMe : $('#remember-me').is(':checked')
 				});
 				Global.setLogedInPerson(loginPerson);
-				
 				$('.miguels-custom-navbar-right').html('');
-				
 				$('.miguels-custom-navbar-right').html(_.template($("#navbar_right_when_loged_in").html()));
-				
-				
-				
-				
+				update();
 				goToHome();
-				
 			}
 		});
 	}
-	//update();
 
 	var goToHome = function() {
 		$('.joke-list').html('');

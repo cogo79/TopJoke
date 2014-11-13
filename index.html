@@ -74,17 +74,19 @@
 
 	<script id="login_template" type="text/template">
 	micke.person@aftonbladet.se nej422Jo
-		<form class="form-signin" role="form">
-			<h2 class="form-signin-heading">Please sign in</h2>
-			<input type="email" id="login_email_input" class="form-control" placeholder="Email address" required autofocus>
-			<input type="password" id="login_password_input" class="form-control" placeholder="Password" required>
-			<div class="checkbox">
-				<label>
-				<input id="remember-me" type="checkbox" value="remember-me"> Remember me
-				</label>
-			</div>
+		<div class="form-signin">
+			<form role="form">
+				<h2 class="form-signin-heading">Please sign in</h2>
+				<input type="email" id="login_email_input" class="form-control" placeholder="Email address" required autofocus>
+				<input type="password" id="login_password_input" class="form-control" placeholder="Password" required>
+				<div class="checkbox">
+					<label>
+					<input id="remember-me" type="checkbox" value="remember-me"> Remember me
+					</label>
+				</div>
+			</form>
 			<button id="sing_in_button" class="btn btn-lg btn-primary btn-block" type="submit">Sign in</button>
-		</form>
+		</div>
 	</script>
 
 	<script id="navbar_right_when_NOT_loged_in" type="text/template">

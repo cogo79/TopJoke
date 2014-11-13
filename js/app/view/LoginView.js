@@ -1,14 +1,5 @@
-define(['app/view/view'], function(view){
+define([], function(){
 	console.log("LoginView.js");
-
-	/*
-	var view;
-	require(['app/view/view'], function(viewParameter) {
-						//view.goToHome();
-		view = viewParameter;
-		console.log("view: ", view);
-	});
-*/
 
 	return Backbone.View.extend({
 		template: _.template($("#login_template").html()),
@@ -18,7 +9,9 @@ define(['app/view/view'], function(view){
 		render: function(){
 			var html = this.template();
 			$(this.el).append(html);
-			view.update();
+			require(['app/view/view'], function(view) {
+				view.update();
+			});
 		}
 	});
 });
