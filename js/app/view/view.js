@@ -14,14 +14,6 @@ define(['app/view/AboutView', 'Global', 'app/view/JokeView', 'app/view/LoginView
 			$('.joke-list').html('');
 			new LoginView({el: $('.joke-list')});
 		});
-		$('.signOut').click(function() {
-			console.log("User " + Global.logedInPerson().get('username') + " signed out.");
-			Global.setLogedInPerson(null);
-			$('.miguels-custom-navbar-right').html('');
-			$('.miguels-custom-navbar-right').html(_.template($("#navbar_right_when_NOT_loged_in").html()));
-			goToHome();
-			update();
-		});
 		$('#sing_in_button').click(function() {
 			var loginPerson = Global.mainGroup().persons().findWhere({
 				email:$('#login_email_input').val(),
@@ -37,6 +29,14 @@ define(['app/view/AboutView', 'Global', 'app/view/JokeView', 'app/view/LoginView
 				update();
 				goToHome();
 			}
+		});
+		$('.signOut').click(function() {
+			console.log("User " + Global.logedInPerson().get('username') + " signed out.");
+			Global.setLogedInPerson(null);
+			$('.miguels-custom-navbar-right').html('');
+			$('.miguels-custom-navbar-right').html(_.template($("#navbar_right_when_NOT_loged_in").html()));
+			goToHome();
+			update();
 		});
 	}
 
