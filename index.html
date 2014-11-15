@@ -85,6 +85,13 @@
 		</form>
 	</script>
 
+	<script id="alert_login_failed_template" type="text/template">
+		<div class="alert alert-danger alert-dismissible login-failed-miguels-custom-css" role="alert">
+  			<button type="button" class="close" data-dismiss="alert"><span aria-hidden="true">&times;</span><span class="sr-only">Close</span></button>
+  			<strong>Sign in failed!</strong> Password or email was not correct.
+		</div>
+	</script>
+
 	<script id="signup_template" type="text/template">
 		<form class="form-signup" role="form">
 			<h2 class="form-signup-heading">Create account</h2>
@@ -115,6 +122,7 @@
 			<input type="text" id="signup_surname_input" class="form-control" placeholder="Surname" required>
 			<button id="sing_up_button" class="btn btn-lg btn-primary btn-block" type="button">Sign up</button>
 		</form>
+		<!-- http://bootstrapvalidator.com/getting-started/ -->
 	</script>
 
 	<script id="navbar_right_when_NOT_loged_in" type="text/template">

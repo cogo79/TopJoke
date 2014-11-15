@@ -1,4 +1,4 @@
-define(['app/view/AboutView', 'Global', 'app/view/JokeView', 'app/view/LoginView', 'app/view/SignUpView'], function(AboutView, Global, JokeView, LoginView, SignUpView){
+define(['app/view/AboutView', 'Global', 'app/view/JokeView', 'app/view/LoginView', 'app/view/SignUpView', 'app/view/SignInFailed_Alert_View'], function(AboutView, Global, JokeView, LoginView, SignUpView, SignInFailed_Alert_View){
 	console.log("view.js");
 	
 	var update = function() {
@@ -55,6 +55,9 @@ define(['app/view/AboutView', 'Global', 'app/view/JokeView', 'app/view/LoginView
 				$('.miguels-custom-navbar-right').html(_.template($("#navbar_right_when_loged_in").html()));
 				update();
 				goToHome();
+			} else {
+
+				new SignInFailed_Alert_View({el:$(".joke-list")});
 			}
 		};
 	
