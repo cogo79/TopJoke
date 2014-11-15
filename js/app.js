@@ -6,4 +6,7 @@ require(['app/Controller', 'app/view/view'], function(Controller, view) {
 	view.goToHome();
 	view.update();
 	
+	return {
+		signIn : view.signIn
+	}
 });

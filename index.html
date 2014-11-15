@@ -10,6 +10,7 @@
 	<link rel="stylesheet" href="style/custom.css">
 
 	<link href="style/signin.css" rel="stylesheet">
+	<link href="style/signup.css" rel="stylesheet">
 
 	<script src="js/lib/jquery.min.js"></script>
 	<script src="js/lib/underscore.js"></script>
@@ -71,26 +72,56 @@
 
 	<script id="login_template" type="text/template">
 	micke.person@aftonbladet.se nej422Jo
-		<div class="form-signin">
-			<form role="form">
-				<h2 class="form-signin-heading">Please sign in</h2>
-				<input type="email" id="login_email_input" class="form-control" placeholder="Email address" required autofocus>
-				<input type="password" id="login_password_input" class="form-control" placeholder="Password" required>
-				<div class="checkbox">
-					<label>
-					<input id="remember-me" type="checkbox" value="remember-me"> Remember me
-					</label>
-				</div>
-			</form>
+		<form class="form-signin" role="form" action="js:app.signIn();">
+			<h2 class="form-signin-heading">Please sign in</h2>
+			<input type="email" id="login_email_input" class="form-control" placeholder="Email address" required autofocus>
+			<input type="password" id="login_password_input" class="form-control" placeholder="Password" required>
+			<div class="checkbox">
+				<label>
+				<input id="remember-me" type="checkbox" value="remember-me"> Remember me
+				</label>
+			</div>
 			<button id="sing_in_button" class="btn btn-lg btn-primary btn-block" type="submit">Sign in</button>
-		</div>
+		</form>
+	</script>
+
+	<script id="signup_template" type="text/template">
+		<form class="form-signup" role="form">
+			<h2 class="form-signup-heading">Create account</h2>
+
+			<ul class="list-group">
+				<input type="text" class="list-group-item" placeholder="Text input">
+				<input type="text" class="list-group-item" placeholder="Text input">
+				<input type="text" class="list-group-item" placeholder="Text input">
+				<input type="text" class="list-group-item" placeholder="Text input">
+				<input type="text" class="list-group-item" placeholder="Text input">
+			</ul>
+
+			<input type="text" class="list-group-item" placeholder="Text input">
+			<input type="text" class="form-control" placeholder="Text input">
+			<input type="text" class="form-control" placeholder="Text input">
+			<input type="text" class="form-control" placeholder="Text input">
+			<input type="text" class="form-control" placeholder="Text input">
+			<input type="text" class="form-control" placeholder="Text input">
+			<input type="text" class="form-control" placeholder="Text input">
+			<input type="text" class="form-control" placeholder="Text input">
+
+
+			<input type="username" id="signup_username_input" class="form-control" placeholder="User name" required autofocus>
+			<input type="email" id="signup_email_input" class="form-control" placeholder="Email address" required>
+			<input type="password" id="signup_password_input" class="form-control" placeholder="Password" required>
+			<input type="password" id="signup_retype_password_input" class="form-control" placeholder="Repeat password" required>
+			<input type="text" id="signup_first_name_input" class="form-control" placeholder="First name" required>
+			<input type="text" id="signup_surname_input" class="form-control" placeholder="Surname" required>
+			<button id="sing_up_button" class="btn btn-lg btn-primary btn-block" type="button">Sign up</button>
+		</form>
 	</script>
 
 	<script id="navbar_right_when_NOT_loged_in" type="text/template">
 		<li class="home"><a href="#">Home</a></li>
 		<li class="about"><a href="#">About</a></li>
 		<li class="signIn"><a href="#" >Sign in</a></li>
-		<li class="createAccount"><a href="#">Create account</a></li>
+		<li class="signUp"><a href="#">Create account</a></li>
 	</script>
 
 	<script id="navbar_right_when_loged_in" type="text/template">
