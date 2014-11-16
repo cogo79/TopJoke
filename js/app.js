@@ -7,6 +7,7 @@ require(['app/Controller', 'app/view/view'], function(Controller, view) {
 	view.update();
 	
 	return {
-		signIn : view.signIn
+		signIn : view.signIn,
+		signUp : view.signUp
 	}
 });

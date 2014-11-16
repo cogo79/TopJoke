@@ -1,4 +1,4 @@
-define(['app/view/AboutView', 'Global', 'app/view/JokeView', 'app/view/LoginView', 'app/view/SignUpView', 'app/view/SignInFailed_Alert_View'], function(AboutView, Global, JokeView, LoginView, SignUpView, SignInFailed_Alert_View){
+define(['app/view/AboutView', 'Global', 'app/view/JokeView', 'app/view/LoginView', 'app/view/SignUpView', 'app/view/SignInFailed_Alert_View', 'app/view/LoginWelcome_Alert_View'], function(AboutView, Global, JokeView, LoginView, SignUpView, SignInFailed_Alert_View, LoginWelcome_Alert_View){
 	console.log("view.js");
 	
 	var update = function() {
@@ -14,11 +14,13 @@ define(['app/view/AboutView', 'Global', 'app/view/JokeView', 'app/view/LoginView
 			$('.joke-list').html('');
 			new LoginView({el: $('.joke-list')});
 		});
+		$('#sing_in_button').click(signIn);
+
 		$('.signUp').click(function() {
 			$('.joke-list').html('');
 			new SignUpView({el: $('.joke-list')});
 		});
-		$('#sing_in_button').click(signIn);
+		$('#sing_up_button').click(signUp);
 
 		$('.signOut').click(function() {
 			console.log("User \"" + Global.logedInPerson().get('username') + "\" signed out.");
@@ -55,6 +57,8 @@ define(['app/view/AboutView', 'Global', 'app/view/JokeView', 'app/view/LoginView
 			$('.miguels-custom-navbar-right').html(_.template($("#navbar_right_when_loged_in").html()));
 			update();
 			goToHome();
+
+			new LoginWelcome_Alert_View({ el: $("body"), username: loginPerson.get('username')});		
 		} else {
 
 			new SignInFailed_Alert_View({el:$(".joke-list")});
@@ -62,13 +66,22 @@ define(['app/view/AboutView', 'Global', 'app/view/JokeView', 'app/view/LoginView
 	};
 
 	var signUp = function() {
-		
-	}
+		/*
+		mystring = "hello";
+yourstring = "bad & string";
+
+validRegEx = /^[^\\\/&]*$/;
+
+alert(mystring.match(validRegEx));
+alert(yourstring.match(validRegEx));
+*/
+	};
 	
 	return {
 		update : update,
 		goToHome : goToHome,
-		signIn : signIn
+		signIn : signIn,
+		signUp : signUp
 	}
 
 });
