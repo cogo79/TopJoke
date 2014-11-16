@@ -42,24 +42,28 @@ define(['app/view/AboutView', 'Global', 'app/view/JokeView', 'app/view/LoginView
 	};
 
 	var signIn = function() {
-			var loginPerson = Global.mainGroup().persons().findWhere({
-				email:$('#login_email_input').val(),
-				password:$('#login_password_input').val(),
+		var loginPerson = Global.mainGroup().persons().findWhere({
+			email:$('#login_email_input').val(),
+			password:$('#login_password_input').val(),
+		});
+		if (loginPerson) {
+			loginPerson.set({
+				rememberMe : $('#remember-me').is(':checked')
 			});
-			if (loginPerson) {
-				loginPerson.set({
-					rememberMe : $('#remember-me').is(':checked')
-				});
-				Global.setLogedInPerson(loginPerson);
-				$('.miguels-custom-navbar-right').html('');
-				$('.miguels-custom-navbar-right').html(_.template($("#navbar_right_when_loged_in").html()));
-				update();
-				goToHome();
-			} else {
+			Global.setLogedInPerson(loginPerson);
+			$('.miguels-custom-navbar-right').html('');
+			$('.miguels-custom-navbar-right').html(_.template($("#navbar_right_when_loged_in").html()));
+			update();
+			goToHome();
+		} else {
 
-				new SignInFailed_Alert_View({el:$(".joke-list")});
-			}
-		};
+			new SignInFailed_Alert_View({el:$(".joke-list")});
+		}
+	};
+
+	var signUp = function() {
+		
+	}
 	
 	return {
 		update : update,

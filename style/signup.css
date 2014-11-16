@@ -19,13 +19,30 @@
 .form-signup .form-control:focus {
   z-index: 2;
 }
-.form-signup input[type="email"] {
-  margin-bottom: -1px;
-  border-bottom-right-radius: 0;
-  border-bottom-left-radius: 0;
+
+.sign-up-form-ME {
+  width: 100%;
 }
-.form-signup input[type="password"] {
+
+.sign-up-form-list-group-ME {
   margin-bottom: 10px;
-  border-top-left-radius: 0;
-  border-top-right-radius: 0;
+}
+
+.sign-up-form-bio-ME {
+  margin-bottom: 10px;
+}
+
+.star_column_ME {
+  float: left;
+  width: 0px;
+}
+
+.div_star_column_ME{
+  height: 42px;
+}
+
+.star_ME {
+  position: relative;
+  left: -20px;
+  top: 10px;
 }

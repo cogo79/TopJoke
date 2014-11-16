@@ -95,34 +95,38 @@
 	<script id="signup_template" type="text/template">
 		<form class="form-signup" role="form">
 			<h2 class="form-signup-heading">Create account</h2>
-
-			<ul class="list-group">
-				<input type="text" class="list-group-item" placeholder="Text input">
-				<input type="text" class="list-group-item" placeholder="Text input">
-				<input type="text" class="list-group-item" placeholder="Text input">
-				<input type="text" class="list-group-item" placeholder="Text input">
-				<input type="text" class="list-group-item" placeholder="Text input">
+			<div class="star_column_ME">
+				<div class="div_star_column_ME"></div>
+				<div class="div_star_column_ME"></div>
+				<div class="div_star_column_ME">
+					<span class="glyphicon glyphicon-star star_ME" aria-hidden="true"></span>
+				</div>
+				<div class="div_star_column_ME">
+					<span class="glyphicon glyphicon-star star_ME" aria-hidden="true"></span>
+				</div>
+				<div class="div_star_column_ME"></div>
+				<div class="div_star_column_ME">
+					<span class="glyphicon glyphicon-star star_ME" aria-hidden="true"></span>
+				</div>
+				<div class="div_star_column_ME">
+					<span class="glyphicon glyphicon-star star_ME" aria-hidden="true"></span>
+				</div>
+			</div>
+			<ul class="list-group sign-up-form-list-group-ME">
+				<input type="text" class="list-group-item sign-up-form-ME" placeholder="First name">
+				<input type="text" class="list-group-item sign-up-form-ME" placeholder="Last number">
+				<input type="text" class="list-group-item sign-up-form-ME" placeholder="Username" required>
+				<input type="email" class="list-group-item sign-up-form-ME" placeholder="e-mail" required>
+				<input type="text" class="list-group-item sign-up-form-ME" placeholder="Phone number">
+				<input type="password" class="list-group-item sign-up-form-ME" placeholder="Password" required>
+				<input type="password" class="list-group-item sign-up-form-ME" placeholder="Repeat password" required>
 			</ul>
-
-			<input type="text" class="list-group-item" placeholder="Text input">
-			<input type="text" class="form-control" placeholder="Text input">
-			<input type="text" class="form-control" placeholder="Text input">
-			<input type="text" class="form-control" placeholder="Text input">
-			<input type="text" class="form-control" placeholder="Text input">
-			<input type="text" class="form-control" placeholder="Text input">
-			<input type="text" class="form-control" placeholder="Text input">
-			<input type="text" class="form-control" placeholder="Text input">
-
-
-			<input type="username" id="signup_username_input" class="form-control" placeholder="User name" required autofocus>
-			<input type="email" id="signup_email_input" class="form-control" placeholder="Email address" required>
-			<input type="password" id="signup_password_input" class="form-control" placeholder="Password" required>
-			<input type="password" id="signup_retype_password_input" class="form-control" placeholder="Repeat password" required>
-			<input type="text" id="signup_first_name_input" class="form-control" placeholder="First name" required>
-			<input type="text" id="signup_surname_input" class="form-control" placeholder="Surname" required>
-			<button id="sing_up_button" class="btn btn-lg btn-primary btn-block" type="button">Sign up</button>
+			<textarea class="form-control sign-up-form-bio-ME" rows="3" placeholder="About me..."></textarea>
+			<button id="sing_up_button" class="btn btn-lg btn-primary btn-block" type="submit">Sign up</button>
 		</form>
-		<!-- http://bootstrapvalidator.com/getting-started/ -->
+		<!-- http://bootstrapvalidator.com/getting-started/
+		glyphicon glyphicon-asterisk  -->
+		
 	</script>
 
 	<script id="navbar_right_when_NOT_loged_in" type="text/template">
