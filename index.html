@@ -100,7 +100,7 @@
 	</script>
 
 	<script id="signup_template" type="text/template">
-		<form class="form-signup" role="form" action="js:app.signUn();">
+		<form class="form-signup" role="form" action="js:app.signUp();">
 			<h2 class="form-signup-heading">Create account</h2>
 			<div class="star_column_ME">
 				<div class="div_star_column_ME"></div>
@@ -120,7 +120,7 @@
 				</div>
 			</div>
 			<ul class="list-group sign-up-form-list-group-ME">
-				<input type="text" class="list-group-item sign-up-form-ME" placeholder="First name">
+				<input type="text" class="list-group-item sign-up-form-ME firstName_signUpForm_ME" placeholder="First name">
 				<input type="text" class="list-group-item sign-up-form-ME" placeholder="Last number">
 				<input type="text" class="list-group-item sign-up-form-ME" placeholder="Username" required>
 				<input type="email" class="list-group-item sign-up-form-ME" placeholder="e-mail" required>
@@ -131,6 +131,11 @@
 			<textarea class="form-control sign-up-form-bio-ME" rows="3" placeholder="About me..."></textarea>
 			<button id="sing_up_button" class="btn btn-lg btn-primary btn-block" type="submit">Sign up</button>
 		</form>
+
+<button type="button" class="btn btn-default" data-container="body" data-toggle="popover" data-placement="top" data-content="Vivamus sagittis lacus vel augue laoreet rutrum faucibus.">
+  Popover on top
+</button>
+
 		<!-- http://bootstrapvalidator.com/getting-started/
 		glyphicon glyphicon-asterisk  -->
 		

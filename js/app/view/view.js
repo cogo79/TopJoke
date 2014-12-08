@@ -25,6 +25,7 @@ define(['app/view/AboutView', 'Global', 'app/view/JokeView', 'app/view/LoginView
 		$('.signOut').click(function() {
 			console.log("User \"" + Global.logedInPerson().get('username') + "\" signed out.");
 			Global.setLogedInPerson(null);
+			$('.htmlTag_login_welcome_ME').alert('close');
 			$('.miguels-custom-navbar-right').html('');
 			$('.miguels-custom-navbar-right').html(_.template($("#navbar_right_when_NOT_loged_in").html()));
 			goToHome();
@@ -66,15 +67,12 @@ define(['app/view/AboutView', 'Global', 'app/view/JokeView', 'app/view/LoginView
 	};
 
 	var signUp = function() {
-		/*
-		mystring = "hello";
-yourstring = "bad & string";
-
-validRegEx = /^[^\\\/&]*$/;
-
-alert(mystring.match(validRegEx));
-alert(yourstring.match(validRegEx));
-*/
+		
+		$(function () {
+  $('[data-toggle="popover"]').popover()
+})
+		
+		$('.firstName_signUpForm_ME').popover();
 	};
 	
 	return {
