@@ -1,4 +1,4 @@
-define(['app/view/AboutView', 'Global', 'app/view/JokeView', 'app/view/LoginView', 'app/view/SignUpView', 'app/view/SignInFailed_Alert_View', 'app/view/LoginWelcome_Alert_View'], function(AboutView, Global, JokeView, LoginView, SignUpView, SignInFailed_Alert_View, LoginWelcome_Alert_View){
+define(['app/view/AboutView', 'app/model/Model', 'app/view/JokeView', 'app/view/LoginView', 'app/view/SignUpView', 'app/view/SignInFailed_Alert_View', 'app/view/LoginWelcome_Alert_View', 'app/view/Person'], function(AboutView, Model, JokeView, LoginView, SignUpView, SignInFailed_Alert_View, LoginWelcome_Alert_View, Person){
 	console.log("view.js");
 	
 	var update = function() {
@@ -23,8 +23,8 @@ define(['app/view/AboutView', 'Global', 'app/view/JokeView', 'app/view/LoginView
 		$('#sing_up_button').click(signUp);
 
 		$('.signOut').click(function() {
-			console.log("User \"" + Global.logedInPerson().get('username') + "\" signed out.");
-			Global.setLogedInPerson(null);
+			console.log("User \"" + Model.logedInPerson().get('username') + "\" signed out.");
+			Model.setLogedInPerson(null);
 			$('.htmlTag_login_welcome_ME').alert('close');
 			$('.miguels-custom-navbar-right').html('');
 			$('.miguels-custom-navbar-right').html(_.template($("#navbar_right_when_NOT_loged_in").html()));
@@ -35,7 +35,7 @@ define(['app/view/AboutView', 'Global', 'app/view/JokeView', 'app/view/LoginView
 
 	var goToHome = function() {
 		$('.joke-list').html('');
-		Global.mainGroup().jokes().each(function(joke) {
+		Model.mainGroup().jokes().each(function(joke) {
 			var title, joke, jokeAuthor;
 			title = joke.get('title');
 			jokeStr = joke.get('joke');
@@ -45,7 +45,7 @@ define(['app/view/AboutView', 'Global', 'app/view/JokeView', 'app/view/LoginView
 	};
 
 	var signIn = function() {
-		var loginPerson = Global.mainGroup().persons().findWhere({
+		var loginPerson = Model.mainGroup().persons().findWhere({
 			email:$('#login_email_input').val(),
 			password:$('#login_password_input').val(),
 		});
@@ -53,7 +53,7 @@ define(['app/view/AboutView', 'Global', 'app/view/JokeView', 'app/view/LoginView
 			loginPerson.set({
 				rememberMe : $('#remember-me').is(':checked')
 			});
-			Global.setLogedInPerson(loginPerson);
+			Model.setLogedInPerson(loginPerson);
 			$('.miguels-custom-navbar-right').html('');
 			$('.miguels-custom-navbar-right').html(_.template($("#navbar_right_when_loged_in").html()));
 			update();
@@ -67,12 +67,12 @@ define(['app/view/AboutView', 'Global', 'app/view/JokeView', 'app/view/LoginView
 	};
 
 	var signUp = function() {
-		
-		$(function () {
-  $('[data-toggle="popover"]').popover()
-})
-		
-		$('.firstName_signUpForm_ME').popover();
+		var person = new Person({
+			"first name" : $(""),
+			"username" : "micke",
+			"password" : "nej422Jo",
+			"email" : "micke.person@aftonbladet.se"
+		});
 	};
 	
 	return {
