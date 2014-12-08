@@ -1,13 +1,13 @@
-require(['app/Controller', 'app/view/view'], function(Controller, view) {
+require(['app/controller'], function(controller) {
 	
-	Controller.fillWithHardCodedData();
+	controller.fillWithHardCodedData();
 
 	$('.miguels-custom-navbar-right').html(_.template($("#navbar_right_when_NOT_loged_in").html()));
-	view.goToHome();
-	view.update();
+	controller.goToHome();
+	controller.update();
 	
 	return {
-		signIn : view.signIn,
-		signUp : view.signUp
+		signIn : controller.signIn,
+		signUp : controller.signUp
 	}
 });
