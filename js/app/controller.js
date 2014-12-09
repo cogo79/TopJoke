@@ -6,7 +6,7 @@ define(['app/view/AboutView', 'app/model/Model', 'app/view/JokeView', 'app/view/
 	var update = function() {
 		$('.about').click(function() {
 			$('.joke-list').html('');
-			new AboutView({ el: $(".joke-list")});
+			new AboutView({ el : $(".joke-list") });
 		});
 		$('.home').click(function() {
 			goToHome();
@@ -69,12 +69,35 @@ define(['app/view/AboutView', 'app/model/Model', 'app/view/JokeView', 'app/view/
 	};
 
 	var signUp = function() {
-		var person = new Person({
-			"first name" : $(""),
-			"username" : "micke",
-			"password" : "nej422Jo",
-			"email" : "micke.person@aftonbladet.se"
-		});
+		console.log("signUp");
+
+		var checkIfUsernameIsTaken = function(usernameStr) {
+			var person = Model.mainGroup().persons().findWhere({
+				username : usernameStr
+			});
+			if (person) {
+				return true;
+			} else {
+				return false;
+			}
+		};
+		
+		if (checkIfUsernameIsTaken($(".username_signUpForm_ME").val()) == true) {
+			alert("Username '" + $(".username_signUpForm_ME").val() + "' is already taken.");
+		} else if ($(".password_signUpForm_ME").val().localeCompare($(".repeatPassword_signUpForm_ME").val()) != 0) {
+			alert("Passwords did not match.");
+		} else {
+			var person = new Person({
+				"first name" : $(".firstName_signUpForm_ME").val(),
+				"surname" : $(".surname_signUpForm_ME").val(),
+				"username" : $(".username_signUpForm_ME").val(),
+				"email" : $(".email_signUpForm_ME").val(),
+				"phone number" : $(".phoneNumber_signUpForm_ME").val(),
+				"password" : $(".password_signUpForm_ME").val(),
+				"bio" : $(".bio_signUpForm_ME").val()
+			});
+		}
+		
 	};
 
 	var fillWithHardCodedData = function() {
