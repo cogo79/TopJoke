@@ -64,7 +64,11 @@ define(['app/view/AboutView', 'app/model/Model', 'app/view/JokeView', 'app/view/
 			new LoginWelcome_Alert_View({ el: $("body"), username: loginPerson.get('username')});		
 		} else {
 
-			new SignInFailed_Alert_View({el:$(".joke-list")});
+			var count = 1;
+			console.log("Login failed " + count++);
+			$('#loginAlertContainer').html('');
+			new SignInFailed_Alert_View({el:$("#loginAlertContainer")});
+
 		}
 	};
 
