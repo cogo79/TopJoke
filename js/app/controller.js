@@ -46,6 +46,16 @@ define(['app/view/AboutView', 'app/model/Model', 'app/view/JokeView', 'app/view/
 		});
 	};
 
+	var signInUser = function(person) {
+		Model.setLogedInPerson(person);
+			$('.miguels-custom-navbar-right').html('');
+			$('.miguels-custom-navbar-right').html(_.template($("#navbar_right_when_loged_in").html()));
+			update();
+			goToHome();
+
+			new LoginWelcome_Alert_View({ el: $("body"), username: person.get('username')});
+	};
+
 	var signIn = function() {
 		var loginPerson = Model.mainGroup().persons().findWhere({
 			email:$('#login_email_input').val(),
@@ -55,14 +65,8 @@ define(['app/view/AboutView', 'app/model/Model', 'app/view/JokeView', 'app/view/
 			loginPerson.set({
 				rememberMe : $('#remember-me').is(':checked')
 			});
-			Model.setLogedInPerson(loginPerson);
-			$('.miguels-custom-navbar-right').html('');
-			$('.miguels-custom-navbar-right').html(_.template($("#navbar_right_when_loged_in").html()));
-			update();
-			goToHome();
-
-			new LoginWelcome_Alert_View({ el: $("body"), username: loginPerson.get('username')});		
-			
+			signInUser(loginPerson);
+						
 		} else {
 
 			var count = 1;
@@ -95,7 +99,6 @@ define(['app/view/AboutView', 'app/model/Model', 'app/view/JokeView', 'app/view/
 			new alert_danger_ME_View({ el: $("#SignUpAlertContainer_ME"), alertText: "Passwords did not match."});
 		} else {
 			var person = new Person({
-				
 				"first name" : $(".firstName_signUpForm_ME").val(),
 				"surname" : $(".surname_signUpForm_ME").val(),
 				"username" : $(".username_signUpForm_ME").val(),
@@ -103,8 +106,9 @@ define(['app/view/AboutView', 'app/model/Model', 'app/view/JokeView', 'app/view/
 				"phone number" : $(".phoneNumber_signUpForm_ME").val(),
 				"password" : $(".password_signUpForm_ME").val(),
 				"bio" : $(".bio_signUpForm_ME").val()
-				
 			});
+			Model.mainGroup().persons().add(person);
+			signInUser(person);
 		}
 		
 	};
