@@ -2,7 +2,7 @@ define([], function(){
 	console.log("LoginView.js");
 
 	return Backbone.View.extend({
-		template: _.template($("#login_template").html()),
+		template: _.template($("#login_template_ME").html()),
 		initialize: function(){
 			this.render();
 		},

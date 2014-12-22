@@ -66,11 +66,11 @@
 		</div>
 	</script>
 
-	<script id="aboutPage" type="text/template">
-		<%= aboutPageText %>
+	<script id="aboutPage_ME" type="text/template">
+		<%= aboutPage_METext %>
 	</script>
 
-	<script id="login_template" type="text/template">
+	<script id="login_template_ME" type="text/template">
 	micke.person@aftonbladet.se nej422Jo
 		<form class="form-signin" role="form" action="js:app.signIn();">
 			<h2 class="form-signin-heading">Please sign in</h2>
@@ -88,7 +88,7 @@
 		</div>
 	</script>
 
-	<script id="alert_login_failed_template" type="text/template">
+	<script id="alert_login_failed_template_ME" type="text/template">
 		<div class="alert alert-danger alert-dismissible login-failed-miguels-custom-css" role="alert">
   			<button type="button" class="close" data-dismiss="alert"><span aria-hidden="true">&times;</span><span class="sr-only">Close</span></button>
   			<strong>Sign in failed!</strong> Password or email was not correct.
@@ -102,7 +102,14 @@
 		</div>
 	</script>
 
-	<script id="signup_template" type="text/template">
+	<script id="alert_danger_ME" type="text/template">
+		<div class="alert alert-danger alert-dismissible" role="alert">
+  			<button type="button" class="close" data-dismiss="alert"><span aria-hidden="true">&times;</span><span class="sr-only">Close</span></button>
+  			<%= alertText %>
+		</div>
+	</script>
+
+	<script id="signup_template_ME" type="text/template">
 		<form class="form-signup" role="form" action="js:app.signUp();">
 			<h2 class="form-signup-heading">Create account</h2>
 			<div class="star_column_ME">
@@ -133,12 +140,15 @@
 			</ul>
 			<textarea class="form-control sign-up-form-bio-ME bio_signUpForm_ME" rows="3" placeholder="About me..."></textarea>
 			<button id="sing_up_button" class="btn btn-lg btn-primary btn-block" type="submit">Sign up</button>
+
 		</form>
 
-
+		<div id="SignUpAlertContainer_ME">
+							
+		</div>
 
 		<!-- http://bootstrapvalidator.com/getting-started/
-		glyphicon glyphicon-asterisk  -->
+		glyphicon glyphicon-asterisk -->
 		
 	</script>
 

@@ -1,4 +1,4 @@
-define(['app/view/AboutView', 'app/model/Model', 'app/view/JokeView', 'app/view/LoginView', 'app/view/SignUpView', 'app/view/SignInFailed_Alert_View', 'app/view/LoginWelcome_Alert_View', 'app/model/Person', 'app/model/Group', 'app/model/Joke'], function(AboutView, Model, JokeView, LoginView, SignUpView, SignInFailed_Alert_View, LoginWelcome_Alert_View, Person, Group, Joke){
+define(['app/view/AboutView', 'app/model/Model', 'app/view/JokeView', 'app/view/LoginView', 'app/view/SignUpView', 'app/view/SignInFailed_Alert_View', 'app/view/LoginWelcome_Alert_View', 'app/model/Person', 'app/model/Group', 'app/model/Joke', 'app/view/alert_danger_ME_View'], function(AboutView, Model, JokeView, LoginView, SignUpView, SignInFailed_Alert_View, LoginWelcome_Alert_View, Person, Group, Joke, alert_danger_ME_View){
 	console.log("controller.js");
 	
 	Model.setMainGroup(new Group({"groupName" : "mainGroup"}));
@@ -62,6 +62,7 @@ define(['app/view/AboutView', 'app/model/Model', 'app/view/JokeView', 'app/view/
 			goToHome();
 
 			new LoginWelcome_Alert_View({ el: $("body"), username: loginPerson.get('username')});		
+			
 		} else {
 
 			var count = 1;
@@ -87,11 +88,14 @@ define(['app/view/AboutView', 'app/model/Model', 'app/view/JokeView', 'app/view/
 		};
 		
 		if (checkIfUsernameIsTaken($(".username_signUpForm_ME").val()) == true) {
-			alert("Username '" + $(".username_signUpForm_ME").val() + "' is already taken.");
+			$('#SignUpAlertContainer_ME').html('');
+			new alert_danger_ME_View({ el: $("#SignUpAlertContainer_ME"), alertText: "Username '" + $(".username_signUpForm_ME").val() + "' is already taken."});
 		} else if ($(".password_signUpForm_ME").val().localeCompare($(".repeatPassword_signUpForm_ME").val()) != 0) {
-			alert("Passwords did not match.");
+			$('#SignUpAlertContainer_ME').html('');
+			new alert_danger_ME_View({ el: $("#SignUpAlertContainer_ME"), alertText: "Passwords did not match."});
 		} else {
 			var person = new Person({
+				
 				"first name" : $(".firstName_signUpForm_ME").val(),
 				"surname" : $(".surname_signUpForm_ME").val(),
 				"username" : $(".username_signUpForm_ME").val(),
@@ -99,6 +103,7 @@ define(['app/view/AboutView', 'app/model/Model', 'app/view/JokeView', 'app/view/
 				"phone number" : $(".phoneNumber_signUpForm_ME").val(),
 				"password" : $(".password_signUpForm_ME").val(),
 				"bio" : $(".bio_signUpForm_ME").val()
+				
 			});
 		}
 		
