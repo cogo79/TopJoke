@@ -29,7 +29,7 @@ define(['app/view/AboutView', 'app/model/Model', 'app/view/JokeView', 'app/view/
 			Model.setLogedInPerson(null);
 			$('.htmlTag_login_welcome_ME').alert('close');
 			$('.miguels-custom-navbar-right').html('');
-			$('.miguels-custom-navbar-right').html(_.template($("#navbar_right_when_NOT_loged_in").html()));
+			$('.miguels-custom-navbar-right').html(_.template($("#navbar_when_NOT_loged_in").html()));
 			goToHome();
 			update();
 		});
@@ -49,7 +49,7 @@ define(['app/view/AboutView', 'app/model/Model', 'app/view/JokeView', 'app/view/
 	var signInUser = function(person) {
 		Model.setLogedInPerson(person);
 			$('.miguels-custom-navbar-right').html('');
-			$('.miguels-custom-navbar-right').html(_.template($("#navbar_right_when_loged_in").html()));
+			$('.miguels-custom-navbar-right').html(_.template($("#navbar_when_loged_in").html()));
 			update();
 			goToHome();
 

@@ -1,5 +1,6 @@
 <html>
 <head>
+	<title>TopJoke</title>
 	<link rel="stylesheet" href="style/main.css">
 	<!-- Latest compiled and minified CSS -->
 	<link rel="stylesheet" href="./style/bootstrap.min.css">
@@ -33,23 +34,25 @@
 				<span class="icon-bar"></span>
 			</button>
 
+			
 			<div class="collapse navbar-collapse navHeaderCollapse">
-				<ul class="nav navbar-nav navbar-right miguels-custom-navbar-right">
-					
-				</ul>
 				<form class="navbar-form navbar-right" role="search">
 					<a class="form-group">
 						<input type="text" class="form-control" placeholder="Search">
 					</a>
-					<button type="submit" class="btn btn-default">Submit</button>
+					<button type="submit" class="btn btn-default">GO!</button>
 				</form>
+				<ul class="nav navbar-nav navbar-right miguels-custom-navbar-right">
+					
+				</ul>
+				
 			</div>
 
 		</div>
 	</div>
 
 	<div class="joke-list">
-
+		
 	</div>
 
 	<script id="joke_template" type="text/template" >
@@ -71,7 +74,7 @@
 	</script>
 
 	<script id="login_template_ME" type="text/template">
-	micke.person@aftonbladet.se nej422Jo
+		micke.person@aftonbladet.se nej422Jo
 		<form class="form-signin" role="form" action="js:app.signIn();">
 			<h2 class="form-signin-heading">Please sign in</h2>
 			<input type="email" id="login_email_input" class="form-control" placeholder="Email address" required autofocus>
@@ -152,14 +155,17 @@
 		
 	</script>
 
-	<script id="navbar_right_when_NOT_loged_in" type="text/template">
+	<script id="navbar_when_NOT_loged_in" type="text/template">
 		<li class="home"><a href="#">Home</a></li>
 		<li class="about"><a href="#">About</a></li>
 		<li class="signIn"><a href="#" >Sign in</a></li>
 		<li class="signUp"><a href="#">Create account</a></li>
 	</script>
 
-	<script id="navbar_right_when_loged_in" type="text/template">
+	<script id="navbar_when_loged_in" type="text/template">
+		<li>
+			<a href="#" class="glyphicon glyphicon-plus-sign add_joke_ME" aria-hidden="true"></a>
+		</li>
 		<li class="home"><a href="#">Home</a></li>
 		<li class="about"><a href="#">About</a></li>
 		<li class="groups"><a href="#">Groups</a></li>
