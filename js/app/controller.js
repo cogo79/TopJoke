@@ -11,7 +11,6 @@ define(['app/view/AboutView', 'app/model/Model', 'app/view/JokeView', 'app/view/
 		$('.home').click(function() {
 			goToHome();
 		});
-
 		$('.signIn').click(function() {
 			$('.joke-list').html('');
 			new LoginView({el: $('.joke-list')});
@@ -28,8 +27,8 @@ define(['app/view/AboutView', 'app/model/Model', 'app/view/JokeView', 'app/view/
 			console.log("User \"" + Model.logedInPerson().get('username') + "\" signed out.");
 			Model.setLogedInPerson(null);
 			$('.htmlTag_login_welcome_ME').alert('close');
-			$('.miguels-custom-navbar-right').html('');
-			$('.miguels-custom-navbar-right').html(_.template($("#navbar_when_NOT_loged_in").html()));
+			$('.custom_navbar_ME').html('');
+			$('.custom_navbar_ME').html(_.template($("#navbar_when_NOT_loged_in").html()));
 			goToHome();
 			update();
 		});
@@ -46,14 +45,24 @@ define(['app/view/AboutView', 'app/model/Model', 'app/view/JokeView', 'app/view/
 		});
 	};
 
+	var updateDropdownMenuForGroups = function() {
+
+	};
+
 	var signInUser = function(person) {
 		Model.setLogedInPerson(person);
-			$('.miguels-custom-navbar-right').html('');
-			$('.miguels-custom-navbar-right').html(_.template($("#navbar_when_loged_in").html()));
+			$('.custom_navbar_ME').html('');
+			$('.custom_navbar_ME').html(_.template($("#navbar_when_loged_in").html()));
+
+			Model.setCurrentGroup(Model.mainGroup());
+			updateDropdownMenuForGroups();
+
 			update();
 			goToHome();
 
 			new LoginWelcome_Alert_View({ el: $("body"), username: person.get('username')});
+
+
 	};
 
 	var signIn = function() {
@@ -66,7 +75,7 @@ define(['app/view/AboutView', 'app/model/Model', 'app/view/JokeView', 'app/view/
 				rememberMe : $('#remember-me').is(':checked')
 			});
 			signInUser(loginPerson);
-						
+
 		} else {
 
 			var count = 1;

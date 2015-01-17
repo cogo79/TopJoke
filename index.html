@@ -42,7 +42,7 @@
 					</a>
 					<button type="submit" class="btn btn-default">GO!</button>
 				</form>
-				<ul class="nav navbar-nav navbar-right miguels-custom-navbar-right">
+				<ul class="nav navbar-nav navbar-right custom_navbar_ME">
 					
 				</ul>
 				
@@ -172,10 +172,10 @@
 
 		<li>
 			<a href="#" class="dropdown dropdown-toggle" id="dropdownMenu1" data-toggle="dropdown" aria-expanded="true">
-			Dropdown
+				<span id="selected_group_ME"></span>
 				<span class="caret"></span>
 			</a>
-			<ul class="dropdown-menu" role="menu" aria-labelledby="dropdownMenu1">
+			<ul class="dropdown-menu group_dropdown_menu_ME" role="menu" aria-labelledby="dropdownMenu1">
 				<li role="presentation"><a role="menuitem" tabindex="-1" href="#">Main group</a></li>
 				
 			</ul>
@@ -184,6 +184,10 @@
 		<li class="signOut"><a href="#">Sign out</a></li>
 	</script>
 
+	<script id="li_tag_ME" type="text/template">
+		<li role="presentation"><a role="menuitem" tabindex="-1" href="#"><%= text %></a></li>
+	</script>
+	
 	<!-- Latest compiled and minified JavaScript -->
 	<script src="js/lib/bootstrap.min.js"></script>
 </body>

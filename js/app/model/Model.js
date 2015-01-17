@@ -6,6 +6,7 @@ define(['app/model/Group', 'app/model/Person'], function(Group, Person){
 	var groups = new collection;
 	var mainGroupIsSet = false;
 	var logedInPerson;
+	var currentGroup;
 	return {// public interface
 		addJokeToPerson : function(person, joke) {
 			joke.set({"PersonUsername" : person.get('username')});
@@ -29,6 +30,16 @@ define(['app/model/Group', 'app/model/Person'], function(Group, Person){
 		},
 		logedInPerson: function() {
 			return logedInPerson;
+		},
+		setCurrentGroup: function(group) {
+			currentGroup = group;
+		},
+		currentGroup: function() {
+			return currentGroup;
+		},
+		signOut: function() {
+			logedInPerson = null;
+			currentGroup = mainGroup;
 		}
 	};
 });
