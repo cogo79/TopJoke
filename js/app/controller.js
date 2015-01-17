@@ -1,7 +1,7 @@
 define(['app/view/AboutView', 'app/model/Model', 'app/view/JokeView', 'app/view/LoginView', 'app/view/SignUpView', 'app/view/SignInFailed_Alert_View', 'app/view/LoginWelcome_Alert_View', 'app/model/Person', 'app/model/Group', 'app/model/Joke', 'app/view/alert_danger_ME_View'], function(AboutView, Model, JokeView, LoginView, SignUpView, SignInFailed_Alert_View, LoginWelcome_Alert_View, Person, Group, Joke, alert_danger_ME_View){
 	console.log("controller.js");
 	
-	Model.setMainGroup(new Group({"groupName" : "mainGroup"}));
+	Model.setMainGroup(new Group({"groupName" : "Main group"}));
 
 	var update = function() {
 		$('.about').click(function() {
@@ -25,7 +25,7 @@ define(['app/view/AboutView', 'app/model/Model', 'app/view/JokeView', 'app/view/
 
 		$('.signOut').click(function() {
 			console.log("User \"" + Model.logedInPerson().get('username') + "\" signed out.");
-			Model.setLogedInPerson(null);
+			Model.signOut();
 			$('.htmlTag_login_welcome_ME').alert('close');
 			$('.custom_navbar_ME').html('');
 			$('.custom_navbar_ME').html(_.template($("#navbar_when_NOT_loged_in").html()));
@@ -46,7 +46,9 @@ define(['app/view/AboutView', 'app/model/Model', 'app/view/JokeView', 'app/view/
 	};
 
 	var updateDropdownMenuForGroups = function() {
-
+		
+		$("#selected_group_ME").append(Model.currentGroup().get("groupName"));
+		
 	};
 
 	var signInUser = function(person) {
