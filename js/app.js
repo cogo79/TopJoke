@@ -11,3 +11,10 @@ require(['app/controller'], function(controller) {
 		signUp : controller.signUp
 	}
 });
+
+
+
+
+
+
+

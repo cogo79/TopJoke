@@ -1,7 +1,8 @@
-define(['app/view/AboutView', 'app/model/Model', 'app/view/JokeView', 'app/view/LoginView', 'app/view/SignUpView', 'app/view/SignInFailed_Alert_View', 'app/view/LoginWelcome_Alert_View', 'app/model/Person', 'app/model/Group', 'app/model/Joke', 'app/view/alert_danger_ME_View'], function(AboutView, Model, JokeView, LoginView, SignUpView, SignInFailed_Alert_View, LoginWelcome_Alert_View, Person, Group, Joke, alert_danger_ME_View){
+define(['app/view/AboutView', 'app/model/Model', 'app/view/JokeView', 'app/view/LoginView', 'app/view/SignUpView', 'app/view/SignInFailed_Alert_View', 'app/view/LoginWelcome_Alert_View', 'app/model/Person', 'app/model/Group', 'app/model/Joke', 'app/view/alert_danger_ME_View', 'app/view/ListItemView'], function(AboutView, Model, JokeView, LoginView, SignUpView, SignInFailed_Alert_View, LoginWelcome_Alert_View, Person, Group, Joke, alert_danger_ME_View, ListItemView){
 	console.log("controller.js");
 	
 	Model.setMainGroup(new Group({"groupName" : "Main group"}));
+	Model.setCurrentGroup(Model.mainGroup());
 
 	var update = function() {
 		$('.about').click(function() {
@@ -36,7 +37,7 @@ define(['app/view/AboutView', 'app/model/Model', 'app/view/JokeView', 'app/view/
 
 	var goToHome = function() {
 		$('.joke-list').html('');
-		Model.mainGroup().jokes().each(function(joke) {
+		Model.currentGroup().jokes().each(function(joke) {
 			var title, joke, jokeAuthor;
 			title = joke.get('title');
 			jokeStr = joke.get('joke');
@@ -48,6 +49,8 @@ define(['app/view/AboutView', 'app/model/Model', 'app/view/JokeView', 'app/view/
 	var updateDropdownMenuForGroups = function() {
 		
 		$("#selected_group_ME").append(Model.currentGroup().get("groupName"));
+		
+		
 		
 	};
 

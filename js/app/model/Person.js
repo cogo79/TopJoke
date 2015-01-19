@@ -1,4 +1,4 @@
-define(['app/model/Joke', 'app/model/Group', 'app/model/Rating'], function(Joke, Group, Rating){
+define(['app/model/Joke', 'app/model/Group', 'app/model/Rating', 'app/model/Comment'], function(Joke, Group, Rating, Comment){
 	return Backbone.Model.extend({
 		initialize: function() {
 			Jokes = Backbone.Collection.extend({
@@ -9,12 +9,17 @@ define(['app/model/Joke', 'app/model/Group', 'app/model/Rating'], function(Joke,
 			Comments = Backbone.Collection.extend({
 				model: Comment
 			});
-			this.set('groups', new Comments);
+			this.set('comments', new Comments);
 
 			Ratings = Backbone.Collection.extend({
 				model: Rating
 			});
 			this.set('ratings', new Ratings);
+
+			Groups = Backbone.Collection.extend({
+				model: Group
+			});
+			this.set('groups', new Group);
 
 			console.log('Person "'+ this.get('username') +'" created. Cid: ', this.cid);
 		},
@@ -36,6 +41,9 @@ define(['app/model/Joke', 'app/model/Group', 'app/model/Rating'], function(Joke,
       	},
       	ratings: function() {
       		return this.get('ratings');
+      	},
+      	groups: function() {
+      		return this.get('groups');
       	}
     });
 });
