@@ -4,7 +4,7 @@ define([], function(){
 	return Backbone.View.extend({
 		template: _.template($("#li_tag_ME").html()),
 		text: '',
-		initialize: function(){
+		initialize: function(options){
 			this.text = options.text;
 			this.render();
 		},

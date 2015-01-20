@@ -38,6 +38,10 @@ define(['app/model/Person', 'app/model/Joke', 'app/model/Rating', 'app/model/Com
 		},
 		persons: function() {
 			return this.get('persons');
+		},
+		addPerson: function(person) {
+			this.get('persons').add(person);
+			person.groups().add(this);
 		}
 	});
 });

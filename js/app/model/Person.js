@@ -19,7 +19,7 @@ define(['app/model/Joke', 'app/model/Group', 'app/model/Rating', 'app/model/Comm
 			Groups = Backbone.Collection.extend({
 				model: Group
 			});
-			this.set('groups', new Group);
+			this.set('groups', new Groups);
 
 			console.log('Person "'+ this.get('username') +'" created. Cid: ', this.cid);
 		},

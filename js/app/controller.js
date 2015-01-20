@@ -48,10 +48,13 @@ define(['app/view/AboutView', 'app/model/Model', 'app/view/JokeView', 'app/view/
 
 	var updateDropdownMenuForGroups = function() {
 		
-		$("#selected_group_ME").append(Model.currentGroup().get("groupName"));
+		$("#selected_group_ME").html(Model.currentGroup().get("groupName"));
 		
-		
-		
+		$(".group_dropdown_menu_ME").html('');
+		Model.logedInPerson().groups().each(function(group) {
+			new ListItemView({ el: $(".group_dropdown_menu_ME"), text: group.get("groupName")});
+		});
+
 	};
 
 	var signInUser = function(person) {
@@ -154,16 +157,21 @@ define(['app/view/AboutView', 'app/model/Model', 'app/view/JokeView', 'app/view/
 				"email" : "pelle.berggren@aftonbladet.se"
 			});
 
-			Model.mainGroup().persons().add(miguel);
-			Model.mainGroup().persons().add(jenny);
-			Model.mainGroup().persons().add(micke);
-			Model.mainGroup().persons().add(pelle);
-			Model.mainGroup().persons().add(cissela);
+			Model.mainGroup().addPerson(miguel);
+			Model.mainGroup().addPerson(jenny);
+			Model.mainGroup().addPerson(micke);
+			Model.mainGroup().addPerson(pelle);
+			Model.mainGroup().addPerson(cissela);
 
 			var roosterGang = new Group({"groupName" : "Rooster gang"});
-			roosterGang.persons().add(miguel);
-			roosterGang.persons().add(jenny);
+			roosterGang.addPerson(miguel);
+			roosterGang.addPerson(micke);
 			Model.groups().add(roosterGang);
+
+			var dreamTeam = new Group({"groupName" : "Dream Team"});
+			dreamTeam.addPerson(miguel);
+			dreamTeam.addPerson(micke);
+			Model.groups().add(dreamTeam);
 
 			var joke;
 			joke = new Joke({"title" : "Bellboy",
