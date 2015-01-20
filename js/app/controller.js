@@ -52,7 +52,15 @@ define(['app/view/AboutView', 'app/model/Model', 'app/view/JokeView', 'app/view/
 		
 		$(".group_dropdown_menu_ME").html('');
 		Model.logedInPerson().groups().each(function(group) {
-			new ListItemView({ el: $(".group_dropdown_menu_ME"), text: group.get("groupName")});
+			new ListItemView({ el: $(".group_dropdown_menu_ME"), text: group.get("groupName"), cid_for_template_ME: group.cid});
+		});
+		
+		$(".list_item_ME").each(function( index ) {
+  			$(this).click(function() {
+  				Model.setCurrentGroup(Model.logedInPerson().groups().get({ cid : $(this).find(".cid_ME").text() }));
+  				updateDropdownMenuForGroups();
+  				goToHome();
+  			});
 		});
 
 	};
@@ -69,7 +77,6 @@ define(['app/view/AboutView', 'app/model/Model', 'app/view/JokeView', 'app/view/
 			goToHome();
 
 			new LoginWelcome_Alert_View({ el: $("body"), username: person.get('username')});
-
 
 	};
 
@@ -174,6 +181,27 @@ define(['app/view/AboutView', 'app/model/Model', 'app/view/JokeView', 'app/view/
 			Model.groups().add(dreamTeam);
 
 			var joke;
+			joke = new Joke({"title" : "Homework",
+				"joke" : "Me: should I get into trouble for something I didn't do?<br>Teacher: No<br>Me: Good, because I didn't do my homework.",
+				"date" : Date()
+			});
+			Model.addJokeToPerson(miguel, joke);
+			dreamTeam.jokes().add(joke);
+
+			joke = new Joke({"title" : "Lovers",
+				"joke" : "Boyfriend: Bitch<br>Girlfriend: I been called worse<br>Boyfriend: Like what<br>Girlfriend: your girlfriend",
+				"date" : Date()
+			});
+			Model.addJokeToPerson(miguel, joke);
+			dreamTeam.jokes().add(joke);
+
+			joke = new Joke({"title" : "Wifi",
+				"joke" : "Wifi went down for five minutes, so i had to talk to my family. They seem like nice people.",
+				"date" : Date()
+			});
+			Model.addJokeToPerson(micke, joke);
+			dreamTeam.jokes().add(joke);
+
 			joke = new Joke({"title" : "Bellboy",
 				"joke" : "There was a church that had a bell that no one could ring. One day, a boy came and asked the priest if he could try. He went up into the tower and ran straight into the bell face-first. The bell tolled loud and clear. The priest gave him the job. One Sunday, the boy ran straight toward the bell with his face and missed, so he fell off the tower and died. \"Congregation,\" the priest said before the assembled masses. \"Does anybody know this boy's name? I don't know him, but his face rings a bell.\"",
 				"date" : Date()
