@@ -24,7 +24,7 @@ define(['app/view/AboutView', 'app/model/Model', 'app/view/JokeView', 'app/view/
 		});
 		$('#sing_up_button').click(signUp);
 
-		$('.signOut').click(function() {
+		$('.signOut').click(function() { // this function is run twise it seams when user clicks to sign out. Don't konw why?
 			console.log("User \"" + Model.logedInPerson().get('username') + "\" signed out.");
 			Model.signOut();
 			$('.htmlTag_login_welcome_ME').alert('close');
@@ -103,6 +103,19 @@ define(['app/view/AboutView', 'app/model/Model', 'app/view/JokeView', 'app/view/
 
 	var signUp = function() {
 		console.log("signUp");
+
+		if ($(".username_signUpForm_ME").val().localeCompare('') == 0) {
+			return;
+		}
+		if ($(".email_signUpForm_ME").val().localeCompare('') == 0) {
+			return;
+		}
+		if ($(".password_signUpForm_ME").val().localeCompare('') == 0) {
+			return;
+		}
+		if ($(".repeatPassword_signUpForm_ME").val().localeCompare('') == 0) {
+			return;
+		}
 
 		var checkIfUsernameIsTaken = function(usernameStr) {
 			var person = Model.mainGroup().persons().findWhere({
