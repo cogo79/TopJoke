@@ -1,6 +1,6 @@
 define([], function() {
 	return Backbone.View.extend({
-		template: _.template($("#joke_template").html()),
+		template: _.template($("#joke_template_ME").html()),
 		title: '', joke: '', jokeAuthor: '',
 		initialize: function(options){
 

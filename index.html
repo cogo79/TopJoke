@@ -12,6 +12,7 @@
 
 	<link href="style/signin.css" rel="stylesheet">
 	<link href="style/signup.css" rel="stylesheet">
+	<link href="style/newJoke.css" rel="stylesheet">
 
 	<script src="js/lib/jquery.min.js"></script>
 	<script src="js/lib/underscore.js"></script>
@@ -55,8 +56,8 @@
 		
 	</div>
 
-	<script id="joke_template" type="text/template" >
-		<div class="panel panel-default miguels-customization">
+	<script id="joke_template_ME" type="text/template" >
+		<div class="panel panel-default joke_tag_ME">
 			<div class="panel-heading">
 				<h3 class="panel-title"><%= title %></h3>
 			</div>
@@ -71,14 +72,23 @@
 
 	<script id="new_joke_template_ME" type="text/template">
 		<form role="form" action="js:app.signUp();">
-			<h2>New joke</h2>
-			<input type="password" placeholder="Title" required>
-			<textarea class="form-control" rows="8" placeholder="Joke text..." required></textarea>
-			<br>
-			<br>
-			<br>
+			<h2 id="new_joke_header_ME">New joke</h2>
+			<div id="new_joke_title_wrappTag_ME" style="overflow:hidden">
+				<input id="new_joke_title_ME" type="text" class="form-control" placeholder="Title" required>
+				<!--<input  id="url" NAME="otherSite" style="width:70%" value=""/>-->
+			</div>
+			<div id="new_joke_text_wrappTag_ME" class="wrapper_the-fix_for_textarea_ME">
+				<textarea id="new_joke_text_ME" type="text" class="form-control" rows="8" placeholder="Joke text..." required />
+			</div>
+
 			<button id="add_new_joke_button_ME" class="btn btn-lg btn-primary btn-block" type="submit">Sign up</button>
 
+<!--
+			<div id="wrapper_ME" class="wrapperthe-fix">
+  				A good-looking textarea with a 100% width
+  				<textarea id="textarea_mmm_ME"></textarea>
+			</div>
+-->
 		</form>
 		
 	</script>
