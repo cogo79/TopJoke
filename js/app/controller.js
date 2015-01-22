@@ -1,10 +1,14 @@
-define(['app/view/AboutView', 'app/model/Model', 'app/view/JokeView', 'app/view/LoginView', 'app/view/SignUpView', 'app/view/SignInFailed_Alert_View', 'app/view/LoginWelcome_Alert_View', 'app/model/Person', 'app/model/Group', 'app/model/Joke', 'app/view/alert_danger_ME_View', 'app/view/ListItemView'], function(AboutView, Model, JokeView, LoginView, SignUpView, SignInFailed_Alert_View, LoginWelcome_Alert_View, Person, Group, Joke, alert_danger_ME_View, ListItemView){
+define(['app/view/AboutView', 'app/model/Model', 'app/view/JokeView', 'app/view/LoginView', 'app/view/SignUpView', 'app/view/SignInFailed_Alert_View', 'app/view/LoginWelcome_Alert_View', 'app/model/Person', 'app/model/Group', 'app/model/Joke', 'app/view/alert_danger_ME_View', 'app/view/ListItemView', 'app/view/NewJokeView'], function(AboutView, Model, JokeView, LoginView, SignUpView, SignInFailed_Alert_View, LoginWelcome_Alert_View, Person, Group, Joke, alert_danger_ME_View, ListItemView, NewJokeView){
 	console.log("controller.js");
 	
 	Model.setMainGroup(new Group({"groupName" : "Main group"}));
 	Model.setCurrentGroup(Model.mainGroup());
 
 	var update = function() {
+		$('.new_joke_ME').click(function() {
+			$('.joke-list').html('');
+			new NewJokeView({ el : $(".joke-list") });
+		});
 		$('.about').click(function() {
 			$('.joke-list').html('');
 			new AboutView({ el : $(".joke-list") });

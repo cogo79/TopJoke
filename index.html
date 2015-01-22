@@ -69,6 +69,20 @@
 		</div>
 	</script>
 
+	<script id="new_joke_template_ME" type="text/template">
+		<form role="form" action="js:app.signUp();">
+			<h2>New joke</h2>
+			<input type="password" placeholder="Title" required>
+			<textarea class="form-control" rows="8" placeholder="Joke text..." required></textarea>
+			<br>
+			<br>
+			<br>
+			<button id="add_new_joke_button_ME" class="btn btn-lg btn-primary btn-block" type="submit">Sign up</button>
+
+		</form>
+		
+	</script>
+
 	<script id="aboutPage_ME" type="text/template">
 		<%= aboutPage_METext %>
 	</script>
@@ -164,7 +178,7 @@
 
 	<script id="navbar_when_loged_in" type="text/template">
 		<li>
-			<a href="#" class="glyphicon glyphicon-plus-sign add_joke_ME" aria-hidden="true"></a>
+			<a href="#" class="glyphicon glyphicon-plus-sign new_joke_ME" aria-hidden="true"></a>
 		</li>
 		<li class="home"><a href="#">Home</a></li>
 		<li class="about"><a href="#">About</a></li>
