@@ -13,12 +13,14 @@
     margin-right: 10px;
 }
 
-#new_joke_text_wrappTag_ME { padding: 0; marign: 0; display: block; margin-left: 10px; margin-right: 10px;}
+#new_joke_text_wrappTag_ME { padding: 0; marign: 0; display: block; margin-left: 10px; margin-right: 10px; margin-top: 8px; margin-bottom: 8px;}
   #new_joke_text_ME { width: 100%; border: 1px padding: 4px; }
   .wrapper_the-fix_for_textarea_ME { padding-right: 10px; }
 
 #add_new_joke_button_ME {
-
+	margin-left: auto;
+    margin-right: auto;
+	width: 300px;
 }
 
 /*
