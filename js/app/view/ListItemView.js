@@ -13,10 +13,6 @@ define([], function(){
 			var variables = { text: this.text, cid_for_template_ME: this.cid_for_template_ME };
     		var html = this.template(variables);
 			$(this.el).append(html);
-			
-			require(['app/controller'], function(controller) {
-				controller.update();
-			});
 		}
 	});
 });

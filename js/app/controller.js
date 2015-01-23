@@ -21,16 +21,16 @@ define(['app/view/AboutView', 'app/model/Model', 'app/view/JokeView', 'app/view/
 		$('.signIn').click(function() {
 			$('.joke-list').html('');
 			new LoginView({el: $('.joke-list')});
+			$('#sing_in_button').click(signIn);
 		});
-		$('#sing_in_button').click(signIn);
 
 		$('.signUp').click(function() {
 			$('.joke-list').html('');
 			new SignUpView({el: $('.joke-list')});
+			$('#sing_up_button').click(signUp);
 		});
-		$('#sing_up_button').click(signUp);
 
-		$('.signOut').click(function() { // this function is run twise it seams when user clicks to sign out. Don't konw why?
+		$('.signOut').click(function() {
 			console.log("User \"" + Model.logedInPerson().get('username') + "\" signed out.");
 			Model.signOut();
 			$('.htmlTag_login_welcome_ME').alert('close');
