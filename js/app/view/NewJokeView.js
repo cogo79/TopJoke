@@ -9,9 +9,7 @@ define([], function(){
 		render: function(){
 			var html = this.template();
 			$(this.el).append(html);
-			require(['app/controller'], function(controller) {
-				controller.update();
-			});
+			
 		}
 	});
 });

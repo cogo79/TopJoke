@@ -8,7 +8,9 @@ define(['app/view/AboutView', 'app/model/Model', 'app/view/JokeView', 'app/view/
 		$('.new_joke_ME').click(function() {
 			$('.joke-list').html('');
 			new NewJokeView({ el : $(".joke-list") });
+			$('#add_new_joke_button_ME').click(newJokeButton_clicked);
 		});
+
 		$('.about').click(function() {
 			$('.joke-list').html('');
 			new AboutView({ el : $(".joke-list") });
@@ -38,6 +40,10 @@ define(['app/view/AboutView', 'app/model/Model', 'app/view/JokeView', 'app/view/
 			update();
 		});
 	}
+
+	var newJokeButton_clicked = function() {
+		console.log("New joke button clicked ;D");
+	};
 
 	var goToHome = function() {
 		$('.joke-list').html('');
@@ -85,6 +91,7 @@ define(['app/view/AboutView', 'app/model/Model', 'app/view/JokeView', 'app/view/
 	};
 
 	var signIn = function() {
+		console.log("sign in button clicked ;D");
 		var loginPerson = Model.mainGroup().persons().findWhere({
 			email:$('#login_email_input').val(),
 			password:$('#login_password_input').val(),
@@ -264,6 +271,7 @@ define(['app/view/AboutView', 'app/model/Model', 'app/view/JokeView', 'app/view/
 	
 	return {
 		update : update,
+		newJokeButton_clicked: newJokeButton_clicked,
 		goToHome : goToHome,
 		signIn : signIn,
 		signUp : signUp,

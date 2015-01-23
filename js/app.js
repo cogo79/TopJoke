@@ -7,6 +7,7 @@ require(['app/controller'], function(controller) {
 	controller.update();
 	
 	return {
+		newJokeButton_clicked: controller.newJokeButton_clicked,
 		signIn : controller.signIn,
 		signUp : controller.signUp
 	}
