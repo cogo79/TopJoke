@@ -42,7 +42,22 @@ define(['app/view/AboutView', 'app/model/Model', 'app/view/JokeView', 'app/view/
 	}
 
 	var newJokeButton_clicked = function() {
-		console.log("New joke button clicked ;D");
+		if ($("#new_joke_title_ME").val().localeCompare('') == 0) {
+			return;
+		}
+		if ($("#new_joke_text_ME").val().localeCompare('') == 0) {
+			return;
+		}
+		console.log("New joke button clicked.");
+		var joke;
+		joke = new Joke({"title" : $("#new_joke_title_ME").val(),
+			"joke" : $("#new_joke_text_ME").val(),
+			"date" : Date()
+		});
+		Model.addJokeToPerson(Model.logedInPerson(), joke);
+		Model.currentGroup().jokes().add(joke, { at: 0 });
+		console.log(joke);
+		goToHome();
 	};
 
 	var goToHome = function() {
@@ -210,63 +225,63 @@ define(['app/view/AboutView', 'app/model/Model', 'app/view/JokeView', 'app/view/
 				"date" : Date()
 			});
 			Model.addJokeToPerson(miguel, joke);
-			dreamTeam.jokes().add(joke);
+			dreamTeam.jokes().add(joke, { at: 0 });
 
 			joke = new Joke({"title" : "Lovers",
 				"joke" : "Boyfriend: Bitch<br>Girlfriend: I been called worse<br>Boyfriend: Like what<br>Girlfriend: your girlfriend",
 				"date" : Date()
 			});
 			Model.addJokeToPerson(miguel, joke);
-			dreamTeam.jokes().add(joke);
+			dreamTeam.jokes().add(joke, { at: 0 });
 
 			joke = new Joke({"title" : "Wifi",
 				"joke" : "Wifi went down for five minutes, so i had to talk to my family. They seem like nice people.",
 				"date" : Date()
 			});
 			Model.addJokeToPerson(micke, joke);
-			dreamTeam.jokes().add(joke);
+			dreamTeam.jokes().add(joke, { at: 0 });
 
-			joke = new Joke({"title" : "Bellboy",
-				"joke" : "There was a church that had a bell that no one could ring. One day, a boy came and asked the priest if he could try. He went up into the tower and ran straight into the bell face-first. The bell tolled loud and clear. The priest gave him the job. One Sunday, the boy ran straight toward the bell with his face and missed, so he fell off the tower and died. \"Congregation,\" the priest said before the assembled masses. \"Does anybody know this boy's name? I don't know him, but his face rings a bell.\"",
-				"date" : Date()
-			});
-			Model.addJokeToPerson(miguel, joke);
-			Model.mainGroup().jokes().add(joke);
-
-			joke = new Joke({"title" : "Rambo trufer",
+			joke = new Joke({"title" : "Rambo",
 				"joke" : "And then Rambo drew his gun and said 'Hasta la vista baby'. And terminator came and said 'Oh I´m shaking!'",
 				"date" : Date()
 			});
 			Model.addJokeToPerson(miguel, joke);
-			Model.mainGroup().jokes().add(joke);
+			Model.mainGroup().jokes().add(joke, { at: 0 });
 
 			joke = new Joke({"title" : "Super Mario lovers",
 				"joke" : "Mario jumped out of the screan and said to little Joe, 'Wanna go out and pick som mushrooms?'",
 				"date" : Date()
 			});
 			Model.addJokeToPerson(miguel, joke);
-			Model.mainGroup().jokes().add(joke);
+			Model.mainGroup().jokes().add(joke, { at: 0 });
 
 			joke = new Joke({"title" : "Mo sistas",
 				"joke" : "Jenifer just smiled and said to Mary. 'How´s you mo Joe runin?'",
 				"date" : Date()
 			});
 			Model.addJokeToPerson(pelle, joke);
-			Model.mainGroup().jokes().add(joke);
+			Model.mainGroup().jokes().add(joke, { at: 0 });
 
 			joke = new Joke({"title" : "Zeldas last wish",
 				"joke" : "As he finaly realized that his days where conted and the end was near, Billy droped by and said: 'Cheer up dude! I brought you some extra life. That will keep you going for at least another couple of days'",
 				"date" : Date()
 			});
 			Model.addJokeToPerson(micke, joke);
-			Model.mainGroup().jokes().add(joke);
+			Model.mainGroup().jokes().add(joke, { at: 0 });
 
 			joke = new Joke({"title" : "Speed way",
 				"joke" : "Is this a joking site? Well hell! Speed way is just such a joke that you don´t even need to joke about it.",
 				"date" : Date()
 			});
 			Model.addJokeToPerson(micke, joke);
-			Model.mainGroup().jokes().add(joke);
+			Model.mainGroup().jokes().add(joke, { at: 0 });
+
+			joke = new Joke({"title" : "Bellboy",
+				"joke" : "There was a church that had a bell that no one could ring. One day, a boy came and asked the priest if he could try. He went up into the tower and ran straight into the bell face-first. The bell tolled loud and clear. The priest gave him the job. One Sunday, the boy ran straight toward the bell with his face and missed, so he fell off the tower and died. \"Congregation,\" the priest said before the assembled masses. \"Does anybody know this boy's name? I don't know him, but his face rings a bell.\"",
+				"date" : Date()
+			});
+			Model.addJokeToPerson(miguel, joke);
+			Model.mainGroup().jokes().add(joke, { at: 0 });
 	};
 	
 	return {

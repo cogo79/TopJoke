@@ -1,0 +1,1 @@
+This webapp works in Chrome. I have not tested it in any other browser.
