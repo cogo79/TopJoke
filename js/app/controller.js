@@ -4,11 +4,37 @@ define(['app/view/AboutView', 'app/model/Model', 'app/view/JokeView', 'app/view/
 	Model.setMainGroup(new Group({"groupName" : "Main group"}));
 	Model.setCurrentGroup(Model.mainGroup());
 
+	var newJokeInputTemp = {title:"", text:""};
+
 	var update = function() {
 		$('.new_joke_ME').click(function() {
 			$('.joke-list').html('');
 			new NewJokeView({ el : $(".joke-list") });
 			$('#add_new_joke_button_ME').click(newJokeButton_clicked);
+
+			saveTemporaryBeforeUserAddsTheJoke = function () {
+				$("#new_joke_text_ME").on("change keyup paste", function() {
+					var currentVal = $("#new_joke_text_ME").val();
+					if(currentVal == newJokeInputTemp.text) {
+		     	  		return; //check to prevent multiple simultaneous triggers
+		    		}
+				    newJokeInputTemp.text = currentVal;
+				    //action to be performed on textarea changed
+
+				});
+				$("#new_joke_title_ME").on("change keyup paste", function() {
+					var currentVal = $("#new_joke_title_ME").val();
+					if(currentVal == newJokeInputTemp.title) {
+		     	  		return; //check to prevent multiple simultaneous triggers
+		    		}
+				    newJokeInputTemp.title = currentVal;
+				    //action to be performed on textarea changed
+
+				});
+				$("#new_joke_text_ME").val(newJokeInputTemp.text);
+				$("#new_joke_title_ME").val(newJokeInputTemp.title);
+			};
+			saveTemporaryBeforeUserAddsTheJoke();
 		});
 
 		$('.about').click(function() {
@@ -56,8 +82,8 @@ define(['app/view/AboutView', 'app/model/Model', 'app/view/JokeView', 'app/view/
 		});
 		Model.addJokeToPerson(Model.logedInPerson(), joke);
 		Model.currentGroup().jokes().add(joke, { at: 0 });
-		console.log(joke);
 		goToHome();
+		newJokeInputTemp.title = ""; newJokeInputTemp.text = "";
 	};
 
 	var goToHome = function() {
