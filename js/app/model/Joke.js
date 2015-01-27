@@ -20,6 +20,10 @@ define(['app/model/Rating', 'app/model/Comment'], function(Rating, Comment){
 		comments: function() {
 		return this.get('comments');
 		},
+		formatedDateString: function() {
+			date = new Date(this.get("date"));
+			return date.toLocaleString();
+		},
 		defaults: {
 			"title" : "0",
 			"joke" : "0",
