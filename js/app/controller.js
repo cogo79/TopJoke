@@ -93,8 +93,14 @@ define(['app/view/AboutView', 'app/model/Model', 'app/view/JokeView', 'app/view/
 			title = joke.get('title');
 			jokeStr = joke.get('joke');
 			jokeAuthor = joke.get('PersonUsername');
-			new JokeView({ el: $(".joke-list"), title: title, joke: jokeStr, jokeAuthor: jokeAuthor});		
+			
+			new JokeView({ el: $(".joke-list"), title: title, joke: jokeStr, jokeAuthor: jokeAuthor, date: formatDateFromDateString(joke.get("date"))});		
 		});
+	};
+
+	var formatDateFromDateString = function(dateStr) {
+		date = new Date(dateStr);
+		return date.toLocaleString();
 	};
 
 	var updateDropdownMenuForGroups = function() {
