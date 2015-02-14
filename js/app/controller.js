@@ -1,4 +1,4 @@
-define(['app/view/AboutView', 'app/model/Model', 'app/view/JokeView', 'app/view/LoginView', 'app/view/SignUpView', 'app/view/SignInFailed_Alert_View', 'app/view/LoginWelcome_Alert_View', 'app/model/Person', 'app/model/Group', 'app/model/Joke', 'app/view/alert_danger_ME_View', 'app/view/ListItemView', 'app/view/NewJokeView'], function(AboutView, Model, JokeView, LoginView, SignUpView, SignInFailed_Alert_View, LoginWelcome_Alert_View, Person, Group, Joke, alert_danger_ME_View, ListItemView, NewJokeView){
+define(['app/view/AboutView', 'app/model/Model', 'app/view/JokeView', 'app/view/LoginView', 'app/view/SignUpView', 'app/view/SignInFailed_Alert_View', 'app/view/LoginWelcome_Alert_View', 'app/model/Person', 'app/model/Group', 'app/model/Joke', 'app/view/alert_danger_ME_View', 'app/view/GroupListItemView', 'app/view/NewJokeView'], function(AboutView, Model, JokeView, LoginView, SignUpView, SignInFailed_Alert_View, LoginWelcome_Alert_View, Person, Group, Joke, alert_danger_ME_View, GroupListItemView, NewJokeView){
 	console.log("controller.js");
 	
 	Model.setMainGroup(new Group({"groupName" : "Main group"}));
@@ -93,7 +93,6 @@ define(['app/view/AboutView', 'app/model/Model', 'app/view/JokeView', 'app/view/
 			title = joke.get('title');
 			jokeStr = joke.get('joke');
 			jokeAuthor = joke.get('PersonUsername');
-			
 			new JokeView({ el: $(".joke-list"), title: title, joke: jokeStr, jokeAuthor: jokeAuthor, date: joke.formatedDateString()});
 		});
 	};
@@ -104,12 +103,12 @@ define(['app/view/AboutView', 'app/model/Model', 'app/view/JokeView', 'app/view/
 		
 		$(".group_dropdown_menu_ME").html('');
 		Model.logedInPerson().groups().each(function(group) {
-			new ListItemView({ el: $(".group_dropdown_menu_ME"), text: group.get("groupName"), cid_for_template_ME: group.cid});
+			new GroupListItemView({ el: $(".group_dropdown_menu_ME"), text: group.get("groupName"), groupCidForTemplate_ME: group.cid});
 		});
 		
-		$(".list_item_ME").each(function( index ) {
+		$(".group_listItem_ME").each(function( index ) {
   			$(this).click(function() {
-  				Model.setCurrentGroup(Model.logedInPerson().groups().get({ cid : $(this).find(".cid_ME").text() }));
+  				Model.setCurrentGroup(Model.logedInPerson().groups().get({ cid : $(this).find(".groupCid_ME").text() }));
   				updateDropdownMenuForGroups();
   				goToHome();
   			});
@@ -119,7 +118,7 @@ define(['app/view/AboutView', 'app/model/Model', 'app/view/JokeView', 'app/view/
 
 	var signInUser = function(person) {
 		Model.setLogedInPerson(person);
-			$('.custom_navbar_ME').html('');
+			//$('.custom_navbar_ME').html('');
 			$('.custom_navbar_ME').html(_.template($("#navbar_when_loged_in").html()));
 
 			Model.setCurrentGroup(Model.mainGroup());
