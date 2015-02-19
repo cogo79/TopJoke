@@ -69,7 +69,7 @@ define(['app/view/AboutView', 'app/model/Model', 'app/view/JokeView', 'app/view/
 		$.fn.stars_ME = function() {
 			return $(this).each(function() {
 		        // Get the value
-		        var val = parseFloat($(this).html());
+		        var val = parseFloat($(this).children().html());
 		        // Make sure that the value is in 0 - 5 range, multiply to get width
 		        var size = Math.max(0, (Math.min(5, val))) * 16;
 		        // Create stars holder
