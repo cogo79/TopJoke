@@ -93,14 +93,28 @@ define(['app/view/AboutView', 'app/model/Model', 'app/view/JokeView', 'app/view/
 			var title, jokeStr, cid, jokeAuthor;
 			title = joke.get('title');
 			jokeStr = joke.get('joke');
-			cid = joke.cid;
+			jokeModel_cid = "jokeTemplateCid_" + joke.cid;
 			jokeAuthor = joke.get('PersonUsername');
-			jokeView = new JokeView({ el: $(".joke-list"), jokeModel_cid: "jokeTemplateCid_" + cid, title: title, joke: jokeStr, jokeAuthor: jokeAuthor, date: joke.formatedDateString()});
-			//console.log("jokeView: ", jokeView);
-			//jokeView.$(".joke_tag_ME").attr("id", "jokeTemplateCid_" + cid);
+			var jokeAuthor_cid = joke.get("jokeAuthor_cid");
+			console.log("jokeAuthor_cid: ", jokeAuthor_cid);
+			jokeView = new JokeView({ el: $(".joke-list"), jokeModel_cid: jokeModel_cid, jokeAuthor_cid: jokeAuthor_cid, title: title, joke: jokeStr, jokeAuthor: jokeAuthor, date: joke.formatedDateString()});
+
+			$("#" + jokeModel_cid + " .stars_ME").click(function () {
+				if (Model.logedInPerson() != null) {
+					if (Model.logedInPerson().cid.localeCompare($(this).parent().parent().children(".jokeAuthor_cid").html()) != 0) {
+						var jokeModel_cid_str = $(this).parent().parent().attr("id");
+						
+						var jokeModel_cid = jokeModel_cid_str.split("_")[1];
+
+						alert("---" + jokeModel_cid + "---");
+					} else {
+						alert("You can't rate your own jokes!");
+					}
+				} else {
+					//alert("You must be logged in to be able to rate jokes.");
+				}
+			});
 		});
-		
-		
 	};
 
 	var updateDropdownMenuForGroups = function() {

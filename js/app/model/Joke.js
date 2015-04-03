@@ -28,6 +28,7 @@ define(['app/model/Rating', 'app/model/Comment'], function(Rating, Comment){
 			"title" : "0",
 			"joke" : "0",
 			"PersonUsername" : null,
+			"jokeAuthor_cid" : null,
 			"date" : null
 		}
 

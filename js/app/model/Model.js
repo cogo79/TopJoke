@@ -10,6 +10,7 @@ define(['app/model/Group', 'app/model/Person'], function(Group, Person){
 	return {// public interface
 		addJokeToPerson : function(person, joke) {
 			joke.set({"PersonUsername" : person.get('username')});
+			joke.set({"jokeAuthor_cid" : person.cid});
 			person.jokes().add(joke);
 		},
 		setMainGroup: function(group) {
