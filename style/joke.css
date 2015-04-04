@@ -8,3 +8,9 @@ span.stars_ME, span.stars_ME span {
 span.stars_ME span {
     background-position: 0 0;
 }
+
+.starsHighlight_ME {
+	position: relative;
+	left: -2px;
+	top: -2px;
+}

@@ -106,24 +106,9 @@ define(['app/view/AboutView', 'app/model/Model', 'app/view/JokeView', 'app/view/
 						
 						var jokeModel_cid = jokeModel_cid_str.split("_")[1];
 
+						setStarsOnJokeView(starNumber(e,this), this);
+						
 
-						var posX = $(this).position().left;
-            			var posY = $(this).position().top;
-            			var relativePosX = e.pageX - posX;
-            			var relativePosY = e.pageY - posY;
-        				console.log(relativePosX + ' , ' + relativePosY);
-        					
-        				if (relativePosX >= 1 && relativePosX <= 16) {
-        					setStarsOnJokeView(1, this);
-        				} else if (relativePosX >= 17 && relativePosX <= 32) {
-        					setStarsOnJokeView(2, this);
-        				} else if (relativePosX >= 33 && relativePosX <= 48) {
-        					setStarsOnJokeView(3, this);
-        				} else if (relativePosX >= 49 && relativePosX <= 64) {
-        					setStarsOnJokeView(4, this);
-        				} else if (relativePosX >= 65 && relativePosX <= 80) {
-        					setStarsOnJokeView(5, this);
-        				}
         				
 						//alert("---" + jokeModel_cid + "---");
 					} else {
@@ -133,7 +118,49 @@ define(['app/view/AboutView', 'app/model/Model', 'app/view/JokeView', 'app/view/
 					//alert("You must be logged in to be able to rate jokes.");
 				}
 			});
+			var maxStars = 5;
+			var countHighlightedStars = 0;
+			$("#" + jokeModel_cid + " .stars_ME").mousemove(function (e) {
+				if (Model.logedInPerson() != null) {
+					if (Model.logedInPerson().cid.localeCompare($(this).parent().parent().children(".jokeAuthor_cid").html()) != 0) {
+						if (countHighlightedStars <= maxStars) {
+							var img = $('<img class="starsHighlight_ME">');
+							img.attr('src', "Graphics/starsHighlight.png");
+							img.appendTo(this);
+							countHighlightedStars++;
+						}
+
+						
+						
+					} else {
+
+					}
+				} else {
+
+				}
+			});
 		});
+	};
+
+	var starNumber = function (e, tag) { // Used to determin witch star was clicked or hoverd on etc.
+		var posX = $(tag).position().left;
+		var posY = $(tag).position().top;
+		var relativePosX = e.pageX - posX;
+		var relativePosY = e.pageY - posY;
+		console.log(relativePosX + ' , ' + relativePosY);
+			
+		if (relativePosX >= 1 && relativePosX <= 16) {
+			return 1;
+		} else if (relativePosX >= 17 && relativePosX <= 32) {
+			return 2;
+		} else if (relativePosX >= 33 && relativePosX <= 48) {
+			return 3;
+		} else if (relativePosX >= 49 && relativePosX <= 64) {
+			return 4;
+		} else if (relativePosX >= 65 && relativePosX <= 80) {
+			return 5;
+		}
+		return 0;
 	};
 
 	var setStarsOnJokeView = function(val, tag) {
