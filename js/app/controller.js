@@ -99,14 +99,33 @@ define(['app/view/AboutView', 'app/model/Model', 'app/view/JokeView', 'app/view/
 			console.log("jokeAuthor_cid: ", jokeAuthor_cid);
 			jokeView = new JokeView({ el: $(".joke-list"), jokeModel_cid: jokeModel_cid, jokeAuthor_cid: jokeAuthor_cid, title: title, joke: jokeStr, jokeAuthor: jokeAuthor, date: joke.formatedDateString()});
 
-			$("#" + jokeModel_cid + " .stars_ME").click(function () {
+			$("#" + jokeModel_cid + " .stars_ME").click(function (e) {
 				if (Model.logedInPerson() != null) {
 					if (Model.logedInPerson().cid.localeCompare($(this).parent().parent().children(".jokeAuthor_cid").html()) != 0) {
 						var jokeModel_cid_str = $(this).parent().parent().attr("id");
 						
 						var jokeModel_cid = jokeModel_cid_str.split("_")[1];
 
-						alert("---" + jokeModel_cid + "---");
+
+						var posX = $(this).position().left;
+            			var posY = $(this).position().top;
+            			var relativePosX = e.pageX - posX;
+            			var relativePosY = e.pageY - posY;
+        				console.log(relativePosX + ' , ' + relativePosY);
+        					
+        				if (relativePosX >= 1 && relativePosX <= 16) {
+        					setStarsOnJokeView(1, this);
+        				} else if (relativePosX >= 17 && relativePosX <= 32) {
+        					setStarsOnJokeView(2, this);
+        				} else if (relativePosX >= 33 && relativePosX <= 48) {
+        					setStarsOnJokeView(3, this);
+        				} else if (relativePosX >= 49 && relativePosX <= 64) {
+        					setStarsOnJokeView(4, this);
+        				} else if (relativePosX >= 65 && relativePosX <= 80) {
+        					setStarsOnJokeView(5, this);
+        				}
+        				
+						//alert("---" + jokeModel_cid + "---");
 					} else {
 						alert("You can't rate your own jokes!");
 					}
@@ -115,6 +134,15 @@ define(['app/view/AboutView', 'app/model/Model', 'app/view/JokeView', 'app/view/
 				}
 			});
 		});
+	};
+
+	var setStarsOnJokeView = function(val, tag) {
+		// Make sure that the value is in 0 - 5 range, multiply to get width
+        var size = Math.max(0, (Math.min(5, val))) * 16;
+        // Create stars holder
+        var $span = $('<span />').width(size);
+        // Replace the numerical value with stars
+        $(tag).html($span);
 	};
 
 	var updateDropdownMenuForGroups = function() {
