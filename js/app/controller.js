@@ -1,4 +1,4 @@
-define(['app/view/AboutView', 'app/model/Model', 'app/view/JokeView', 'app/view/LoginView', 'app/view/SignUpView', 'app/view/SignInFailed_Alert_View', 'app/view/LoginWelcome_Alert_View', 'app/model/Person', 'app/model/Group', 'app/model/Joke', 'app/view/alert_danger_ME_View', 'app/view/GroupListItemView', 'app/view/NewJokeView'], function(AboutView, Model, JokeView, LoginView, SignUpView, SignInFailed_Alert_View, LoginWelcome_Alert_View, Person, Group, Joke, alert_danger_ME_View, GroupListItemView, NewJokeView){
+define(['app/view/AboutView', 'app/model/Model', 'app/view/JokeView', 'app/view/HighlightedStarsView', 'app/view/LoginView', 'app/view/SignUpView', 'app/view/SignInFailed_Alert_View', 'app/view/LoginWelcome_Alert_View', 'app/model/Person', 'app/model/Group', 'app/model/Joke', 'app/view/alert_danger_ME_View', 'app/view/GroupListItemView', 'app/view/NewJokeView'], function(AboutView, Model, JokeView, HighlightedStarsView, LoginView, SignUpView, SignInFailed_Alert_View, LoginWelcome_Alert_View, Person, Group, Joke, alert_danger_ME_View, GroupListItemView, NewJokeView){
 	console.log("controller.js");
 	
 	Model.setMainGroup(new Group({"groupName" : "Main group"}));
@@ -88,16 +88,15 @@ define(['app/view/AboutView', 'app/model/Model', 'app/view/JokeView', 'app/view/
 
 	var goToHome = function() {
 		$('.joke-list').html('');
-		var jokeView;
 		Model.currentGroup().jokes().each(function(joke) {
-			var title, jokeStr, cid, jokeAuthor;
+			var title, jokeStr, jokeAuthor;
 			title = joke.get('title');
 			jokeStr = joke.get('joke');
-			jokeModel_cid = "jokeTemplateCid_" + joke.cid;
+			var jokeModel_cid = "jokeTemplateCid_" + joke.cid;
 			jokeAuthor = joke.get('PersonUsername');
 			var jokeAuthor_cid = joke.get("jokeAuthor_cid");
 			console.log("jokeAuthor_cid: ", jokeAuthor_cid);
-			jokeView = new JokeView({ el: $(".joke-list"), jokeModel_cid: jokeModel_cid, jokeAuthor_cid: jokeAuthor_cid, title: title, joke: jokeStr, jokeAuthor: jokeAuthor, date: joke.formatedDateString()});
+			new JokeView({ el: $(".joke-list"), jokeModel_cid: jokeModel_cid, jokeAuthor_cid: jokeAuthor_cid, title: title, joke: jokeStr, jokeAuthor: jokeAuthor, date: joke.formatedDateString()});
 
 			$("#" + jokeModel_cid + " .stars_ME").click(function (e) {
 				if (Model.logedInPerson() != null) {
@@ -118,25 +117,21 @@ define(['app/view/AboutView', 'app/model/Model', 'app/view/JokeView', 'app/view/
 					//alert("You must be logged in to be able to rate jokes.");
 				}
 			});
-			var maxStars = 5;
-			var countHighlightedStars = 0;
-			$("#" + jokeModel_cid + " .stars_ME").mousemove(function (e) {
+			$("#" + jokeModel_cid + " .stars_ME").mouseenter(function (e) {
+				console.log("jokeModel_cid", jokeModel_cid);
 				if (Model.logedInPerson() != null) {
-					if (Model.logedInPerson().cid.localeCompare($(this).parent().parent().children(".jokeAuthor_cid").html()) != 0) {
-						if (countHighlightedStars <= maxStars) {
-							var img = $('<img class="starsHighlight_ME">');
-							img.attr('src', "Graphics/starsHighlight.png");
-							img.appendTo(this);
-							countHighlightedStars++;
-						}
-
-						
-						
-					} else {
+					if (Model.logedInPerson().cid.localeCompare($(this).closest(".jokeAuthor_cid").html()) != 0) {
+						new HighlightedStarsView({ el: this });
 
 					}
-				} else {
-
+				}
+			});
+			$("#" + jokeModel_cid + " .stars_ME").mouseleave(function (e) {
+				console.log("jokeModel_cid", jokeModel_cid);
+				if (Model.logedInPerson() != null) {
+					if (Model.logedInPerson().cid.localeCompare($(this).closest(".jokeAuthor_cid").html()) != 0) {
+						$(this).find(".highlightedStars_container_ME").remove();
+					}
 				}
 			});
 		});
@@ -168,6 +163,7 @@ define(['app/view/AboutView', 'app/model/Model', 'app/view/JokeView', 'app/view/
         var size = Math.max(0, (Math.min(5, val))) * 16;
         // Create stars holder
         var $span = $('<span />').width(size);
+       $span.addClass("starRating_ME");
         // Replace the numerical value with stars
         $(tag).html($span);
 	};
