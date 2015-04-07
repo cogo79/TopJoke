@@ -118,18 +118,15 @@ define(['app/view/AboutView', 'app/model/Model', 'app/view/JokeView', 'app/view/
 				}
 			});
 			$("#" + jokeModel_cid + " .stars_ME").mouseenter(function (e) {
-				console.log("jokeModel_cid", jokeModel_cid);
 				if (Model.logedInPerson() != null) {
-					if (Model.logedInPerson().cid.localeCompare($(this).closest(".jokeAuthor_cid").html()) != 0) {
+					if (Model.logedInPerson().cid.localeCompare($(this).parent().parent().find(".jokeAuthor_cid").html()) != 0) {
 						new HighlightedStarsView({ el: this });
-
 					}
 				}
 			});
 			$("#" + jokeModel_cid + " .stars_ME").mouseleave(function (e) {
-				console.log("jokeModel_cid", jokeModel_cid);
 				if (Model.logedInPerson() != null) {
-					if (Model.logedInPerson().cid.localeCompare($(this).closest(".jokeAuthor_cid").html()) != 0) {
+					if (Model.logedInPerson().cid.localeCompare($(this).parent().parent().find(".jokeAuthor_cid").html()) != 0) {
 						$(this).find(".highlightedStars_container_ME").remove();
 					}
 				}
@@ -160,12 +157,14 @@ define(['app/view/AboutView', 'app/model/Model', 'app/view/JokeView', 'app/view/
 
 	var setStarsOnJokeView = function(val, tag) {
 		// Make sure that the value is in 0 - 5 range, multiply to get width
+
+		$(tag).find(".starRating_ME").remove();
         var size = Math.max(0, (Math.min(5, val))) * 16;
         // Create stars holder
         var $span = $('<span />').width(size);
        $span.addClass("starRating_ME");
         // Replace the numerical value with stars
-        $(tag).html($span);
+        $(tag).append($span);
 	};
 
 	var updateDropdownMenuForGroups = function() {
