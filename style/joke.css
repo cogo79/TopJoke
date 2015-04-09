@@ -13,47 +13,11 @@ span.stars_ME span {
 	position: relative;
 }
 
-.highlightedStar1_ME {
-	position: relative;
-	left: -2px;
-	top: -3px;
-}
-
-.highlightedStar2_ME {
-	position: relative;
-	left: -10px;
-	top: -3px;
-}
-
-.highlightedStar3_ME {
-	position: relative;
-	left: -18px;
-	top: -3px;
-}
-.highlightedStar4_ME {
-	position: relative;
-	left: 46px;
-	top: -24px;
-}
-
-.highlightedStar5_ME {
-	position: relative;
-	left: 38px;
-	top: -24px;
-}
-
-/*
 .starRating_ME {
-	position: relative;
-}*/
-
-.starRating_ME {
-	position: absolute;
-	top: 0;
+	z-index: -1;
 }
 
-.highlightedStars_container_ME {
-	position: absolute;
-	top: 0;
-	z-index: 1;
+.highlightedStar_container_ME {
+	height: 16px;
+	width: 20px;
 }

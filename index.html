@@ -62,7 +62,13 @@
 			<span class="jokeAuthor_cid" style="display:none;"><%= jokeAuthor_cid %></span>
 			<div class="panel-heading">
 				<h3 class="panel-title"><%= title %></h3>
-				<span class="stars_ME" style="float:right;margin-top:-18px"></span>
+				<span class="stars_ME" style="float:right;margin-top:-18px">
+					<span class="highlightedStar_container_ME" style="float: left; width: 16px; background: none;"></span>
+					<span class="highlightedStar_container_ME" style="float: left; width: 16px; background: none;"></span>
+					<span class="highlightedStar_container_ME" style="float: left; width: 16px; background: none;"></span>
+					<span class="highlightedStar_container_ME" style="float: left; width: 16px; background: none;"></span>
+					<span class="highlightedStar_container_ME" style="float: left; width: 16px; background: none;"></span>
+				</span>
 			</div>
 			<div class="panel-body">
 				<%= joke %>
@@ -77,13 +83,7 @@
 	</script>
 
 	<script id="highlightedStars_template_ME" type="text/template">
-		<div class="highlightedStars_container_ME">
-			<img class="highlightedStar1_ME" src="Graphics/starsHighlight.png">
-			<img class="highlightedStar2_ME" src="Graphics/starsHighlight.png">
-			<img class="highlightedStar3_ME" src="Graphics/starsHighlight.png">
-			<img class="highlightedStar4_ME" src="Graphics/starsHighlight.png">
-			<img class="highlightedStar5_ME" src="Graphics/starsHighlight.png">
-		</div>
+		<img class="highlightedStar_ME" src="Graphics/starsHighlight.png" style="position: relative; top:-2px; left: -2px;">
 	</script>
 
 	<script id="new_joke_template_ME" type="text/template">

@@ -107,9 +107,7 @@ define(['app/view/AboutView', 'app/model/Model', 'app/view/JokeView', 'app/view/
 
 						setStarsOnJokeView(starNumber(e,this), this);
 						
-
-        				
-						//alert("---" + jokeModel_cid + "---");
+						
 					} else {
 						alert("You can't rate your own jokes!");
 					}
@@ -117,20 +115,25 @@ define(['app/view/AboutView', 'app/model/Model', 'app/view/JokeView', 'app/view/
 					//alert("You must be logged in to be able to rate jokes.");
 				}
 			});
-			$("#" + jokeModel_cid + " .stars_ME").mouseenter(function (e) {
+			$("#" + jokeModel_cid + " .highlightedStar_container_ME").mouseenter(function (e) {
+				console.log("jokeModel_cid: "+jokeModel_cid);
 				if (Model.logedInPerson() != null) {
-					if (Model.logedInPerson().cid.localeCompare($(this).parent().parent().find(".jokeAuthor_cid").html()) != 0) {
-						new HighlightedStarsView({ el: this });
+					if (Model.logedInPerson().cid.localeCompare($(this).parent().parent().parent().find(".jokeAuthor_cid").html()) != 0) {
+						var $stars = $(this).parent().children();
+						for (var i = $(this).index(); i >=0; i--) {
+							new HighlightedStarsView({ el: $stars[i] });
+						}
 					}
 				}
 			});
-			$("#" + jokeModel_cid + " .stars_ME").mouseleave(function (e) {
+			$("#" + jokeModel_cid + " .highlightedStar_container_ME").mouseleave(function (e) {
 				if (Model.logedInPerson() != null) {
 					if (Model.logedInPerson().cid.localeCompare($(this).parent().parent().find(".jokeAuthor_cid").html()) != 0) {
-						$(this).find(".highlightedStars_container_ME").remove();
+						$(this).parent().find(".highlightedStar_ME").remove();
 					}
 				}
 			});
+
 		});
 	};
 
