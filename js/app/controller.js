@@ -108,6 +108,7 @@ define(['app/view/AboutView', 'app/model/Model', 'app/view/JokeView', 'app/view/
 						setStarsOnJokeView(starNumber(e,this), this);
 						
 						
+
 					} else {
 						alert("You can't rate your own jokes!");
 					}
@@ -120,16 +121,23 @@ define(['app/view/AboutView', 'app/model/Model', 'app/view/JokeView', 'app/view/
 				if (Model.logedInPerson() != null) {
 					if (Model.logedInPerson().cid.localeCompare($(this).parent().parent().parent().find(".jokeAuthor_cid").html()) != 0) {
 						var $stars = $(this).parent().children();
-						for (var i = $(this).index(); i >=0; i--) {
-							new HighlightedStarsView({ el: $stars[i] });
+						for (var i = $stars.length - 1; i >=0; i--) {
+							if (i > $(this).index()) {
+								$($stars[i]).html("");
+							}
+							if (i <= $(this).index()) {
+								if ($($stars[i]).children().length == 0) {
+									new HighlightedStarsView({ el: $stars[i] });
+								}
+							}
 						}
 					}
 				}
 			});
-			$("#" + jokeModel_cid + " .highlightedStar_container_ME").mouseleave(function (e) {
+			$("#" + jokeModel_cid + " .stars_ME").mouseleave(function (e) {
 				if (Model.logedInPerson() != null) {
 					if (Model.logedInPerson().cid.localeCompare($(this).parent().parent().find(".jokeAuthor_cid").html()) != 0) {
-						$(this).parent().find(".highlightedStar_ME").remove();
+						$(this).find(".highlightedStar_ME").remove();
 					}
 				}
 			});
