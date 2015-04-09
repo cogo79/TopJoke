@@ -124,12 +124,16 @@ define(['app/view/AboutView', 'app/model/Model', 'app/view/JokeView', 'app/view/
 						for (var i = $stars.length - 1; i >=0; i--) {
 							if (i > $(this).index()) {
 								$($stars[i]).html("");
+							} else if ($($stars[i]).children().length == 0) {
+								new HighlightedStarsView({ el: $stars[i] });
 							}
+							/*
 							if (i <= $(this).index()) {
 								if ($($stars[i]).children().length == 0) {
 									new HighlightedStarsView({ el: $stars[i] });
 								}
 							}
+							*/
 						}
 					}
 				}
