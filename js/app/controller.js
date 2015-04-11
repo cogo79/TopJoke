@@ -105,7 +105,7 @@ define(['app/view/AboutView', 'app/model/Model', 'app/view/JokeView', 'app/view/
 						var jokeModel_cid_str = $(this).parent().parent().attr("id");
 						
 						var jokeModel_cid = jokeModel_cid_str.split("_")[1];
-						
+
 						var joke = Model.currentGroup().jokes().get({cid : jokeModel_cid});
 
 						var points = starNumber(e,this);
@@ -122,13 +122,12 @@ define(['app/view/AboutView', 'app/model/Model', 'app/view/JokeView', 'app/view/
 								"PersonUsername" : Model.logedInPerson().get("username"),
 								"ratorPersonCID" : Model.logedInPerson().cid
 							});
+							joke.ratings().add(rating);
+							Model.logedInPerson().ratings().add(rating);
+							Model.currentGroup().ratings().add(rating);
 						}
 						sumOfRatingPoints += points;
 						joke.set({"sumOfRatingPoints" : sumOfRatingPoints});
-
-						joke.ratings().add(rating);
-						Model.logedInPerson().ratings().add(rating);
-						Model.currentGroup().ratings().add(rating);
 						
 						setStarsOnJokeView(joke.avarageRating(), this);
 
