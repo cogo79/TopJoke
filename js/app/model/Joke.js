@@ -18,6 +18,9 @@ define(['app/model/Rating', 'app/model/Comment'], function(Rating, Comment){
 			return this.get('ratings');
 		},
 		avarageRating: function() {
+			if (this.get('ratings').length == 0) {
+				return 0;
+			}
 			return this.get('sumOfRatingPoints') / this.get('ratings').length;
 		},
 		comments: function() {

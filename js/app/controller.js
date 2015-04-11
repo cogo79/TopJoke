@@ -96,8 +96,8 @@ define(['app/view/AboutView', 'app/model/Model', 'app/view/JokeView', 'app/view/
 			jokeAuthor = joke.get('PersonUsername');
 			var jokeAuthor_cid = joke.get("jokeAuthor_cid");
 			console.log("jokeAuthor_cid: ", jokeAuthor_cid);
-			new JokeView({ el: $(".joke-list"), jokeModel_cid: jokeModel_cid, jokeAuthor_cid: jokeAuthor_cid, title: title, joke: jokeStr, jokeAuthor: jokeAuthor, date: joke.formatedDateString()});
-
+			var jokeView = new JokeView({ el: $(".joke-list"), jokeModel_cid: jokeModel_cid, jokeAuthor_cid: jokeAuthor_cid, title: title, joke: jokeStr, jokeAuthor: jokeAuthor, date: joke.formatedDateString()});
+			setStarsOnJokeView(joke.avarageRating(), jokeView.$(".stars_ME"));
 			$("#" + jokeModel_cid + " .stars_ME").click(function (e) {
 				if (Model.logedInPerson() != null) {
 					if (Model.logedInPerson().cid.localeCompare($(this).parent().parent().children(".jokeAuthor_cid").html()) != 0) {
