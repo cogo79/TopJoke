@@ -17,6 +17,9 @@ define(['app/model/Rating', 'app/model/Comment'], function(Rating, Comment){
 		ratings: function() {
 			return this.get('ratings');
 		},
+		avarageRating: function() {
+			return this.get('sumOfRatingPoints') / this.get('ratings').length;
+		},
 		comments: function() {
 		return this.get('comments');
 		},
@@ -29,7 +32,8 @@ define(['app/model/Rating', 'app/model/Comment'], function(Rating, Comment){
 			"joke" : "0",
 			"PersonUsername" : null,
 			"jokeAuthor_cid" : null,
-			"date" : null
+			"date" : null,
+			"sumOfRatingPoints" : 0
 		}
 
 	});

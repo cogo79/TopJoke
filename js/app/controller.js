@@ -1,4 +1,4 @@
-define(['app/view/AboutView', 'app/model/Model', 'app/view/JokeView', 'app/view/HighlightedStarsView', 'app/view/LoginView', 'app/view/SignUpView', 'app/view/SignInFailed_Alert_View', 'app/view/LoginWelcome_Alert_View', 'app/model/Person', 'app/model/Group', 'app/model/Joke', 'app/view/alert_danger_ME_View', 'app/view/GroupListItemView', 'app/view/NewJokeView'], function(AboutView, Model, JokeView, HighlightedStarsView, LoginView, SignUpView, SignInFailed_Alert_View, LoginWelcome_Alert_View, Person, Group, Joke, alert_danger_ME_View, GroupListItemView, NewJokeView){
+define(['app/view/AboutView', 'app/model/Model', 'app/view/JokeView', 'app/view/HighlightedStarsView', 'app/view/LoginView', 'app/view/SignUpView', 'app/view/SignInFailed_Alert_View', 'app/view/LoginWelcome_Alert_View', 'app/model/Person', 'app/model/Group', 'app/model/Joke', 'app/model/Rating', 'app/view/alert_danger_ME_View', 'app/view/GroupListItemView', 'app/view/NewJokeView'], function(AboutView, Model, JokeView, HighlightedStarsView, LoginView, SignUpView, SignInFailed_Alert_View, LoginWelcome_Alert_View, Person, Group, Joke, Rating, alert_danger_ME_View, GroupListItemView, NewJokeView){
 	console.log("controller.js");
 	
 	Model.setMainGroup(new Group({"groupName" : "Main group"}));
@@ -101,13 +101,36 @@ define(['app/view/AboutView', 'app/model/Model', 'app/view/JokeView', 'app/view/
 			$("#" + jokeModel_cid + " .stars_ME").click(function (e) {
 				if (Model.logedInPerson() != null) {
 					if (Model.logedInPerson().cid.localeCompare($(this).parent().parent().children(".jokeAuthor_cid").html()) != 0) {
+
 						var jokeModel_cid_str = $(this).parent().parent().attr("id");
 						
 						var jokeModel_cid = jokeModel_cid_str.split("_")[1];
+						
+						var joke = Model.currentGroup().jokes().get({cid : jokeModel_cid});
 
-						setStarsOnJokeView(starNumber(e,this), this);
+						var points = starNumber(e,this);
 						
+						var sumOfRatingPoints = joke.get("sumOfRatingPoints");
+						var rating = joke.ratings().findWhere({"ratorPersonCID" : Model.logedInPerson().cid});
+						if (rating) {
+							sumOfRatingPoints -= rating.get("points");
+							
+							rating.set({"points" : points});
+						} else {
+							rating = new Rating({
+								"points" : points,
+								"PersonUsername" : Model.logedInPerson().get("username"),
+								"ratorPersonCID" : Model.logedInPerson().cid
+							});
+						}
+						sumOfRatingPoints += points;
+						joke.set({"sumOfRatingPoints" : sumOfRatingPoints});
+
+						joke.ratings().add(rating);
+						Model.logedInPerson().ratings().add(rating);
+						Model.currentGroup().ratings().add(rating);
 						
+						setStarsOnJokeView(joke.avarageRating(), this);
 
 					} else {
 						alert("You can't rate your own jokes!");
@@ -117,7 +140,6 @@ define(['app/view/AboutView', 'app/model/Model', 'app/view/JokeView', 'app/view/
 				}
 			});
 			$("#" + jokeModel_cid + " .highlightedStar_container_ME").mouseenter(function (e) {
-				console.log("jokeModel_cid: "+jokeModel_cid);
 				if (Model.logedInPerson() != null) {
 					if (Model.logedInPerson().cid.localeCompare($(this).parent().parent().parent().find(".jokeAuthor_cid").html()) != 0) {
 						var $stars = $(this).parent().children();
@@ -127,13 +149,6 @@ define(['app/view/AboutView', 'app/model/Model', 'app/view/JokeView', 'app/view/
 							} else if ($($stars[i]).children().length == 0) {
 								new HighlightedStarsView({ el: $stars[i] });
 							}
-							/*
-							if (i <= $(this).index()) {
-								if ($($stars[i]).children().length == 0) {
-									new HighlightedStarsView({ el: $stars[i] });
-								}
-							}
-							*/
 						}
 					}
 				}
