@@ -86,6 +86,7 @@ define(['app/view/AboutView', 'app/model/Model', 'app/view/JokeView', 'app/view/
 		newJokeInputTemp.title = ""; newJokeInputTemp.text = "";
 	};
 
+	var jokeCidToTest;
 	var goToHome = function() {
 		$('.joke-list').html('');
 		Model.currentGroup().jokes().each(function(joke) {
@@ -93,11 +94,18 @@ define(['app/view/AboutView', 'app/model/Model', 'app/view/JokeView', 'app/view/
 			title = joke.get('title');
 			jokeStr = joke.get('joke');
 			var jokeModel_cid = "jokeTemplateCid_" + joke.cid;
+			var starRatingWidth = Math.max(0, (Math.min(5, joke.avarageRating()))) * 16;
 			jokeAuthor = joke.get('PersonUsername');
 			var jokeAuthor_cid = joke.get("jokeAuthor_cid");
 			console.log("jokeAuthor_cid: ", jokeAuthor_cid);
-			var jokeView = new JokeView({ el: $(".joke-list"), jokeModel_cid: jokeModel_cid, jokeAuthor_cid: jokeAuthor_cid, title: title, joke: jokeStr, jokeAuthor: jokeAuthor, date: joke.formatedDateString()});
-			setStarsOnJokeView(joke.avarageRating(), jokeView.$(".stars_ME"));
+			var jokeView = new JokeView({ el: $(".joke-list"), jokeModel_cid: jokeModel_cid, starRatingWidth: starRatingWidth, jokeAuthor_cid: jokeAuthor_cid, title: title, joke: jokeStr, jokeAuthor: jokeAuthor, date: joke.formatedDateString()});
+			/*
+			if (joke.cid == jokeCidToTest) {
+				console.log("setStarsOnJokeView(joke.avarageRating(), jokeView.$('.stars_ME')); : ", joke.avarageRating());
+				console.log("setStarsOnJokeView(joke.avarageRating(), jokeView.$('.stars_ME')); : ", jokeView.$(".stars_ME"));
+			}
+			*/
+			//setStarsOnJokeView(joke.avarageRating(), $("#" + jokeModel_cid + " .stars_ME")); // test this!
 			$("#" + jokeModel_cid + " .stars_ME").click(function (e) {
 				if (Model.logedInPerson() != null) {
 					if (Model.logedInPerson().cid.localeCompare($(this).parent().parent().children(".jokeAuthor_cid").html()) != 0) {
@@ -129,8 +137,8 @@ define(['app/view/AboutView', 'app/model/Model', 'app/view/JokeView', 'app/view/
 						sumOfRatingPoints += points;
 						joke.set({"sumOfRatingPoints" : sumOfRatingPoints});
 						
-						setStarsOnJokeView(joke.avarageRating(), this);
-
+						//setStarsOnJokeView(joke.avarageRating(), this);
+						$(this).find(".starRating_ME").width(Math.max(0, (Math.min(5, joke.avarageRating()))) * 16);
 					} else {
 						alert("You can't rate your own jokes!");
 					}
@@ -159,7 +167,6 @@ define(['app/view/AboutView', 'app/model/Model', 'app/view/JokeView', 'app/view/
 					}
 				}
 			});
-
 		});
 	};
 
@@ -168,7 +175,7 @@ define(['app/view/AboutView', 'app/model/Model', 'app/view/JokeView', 'app/view/
 		var posY = $(tag).position().top;
 		var relativePosX = e.pageX - posX;
 		var relativePosY = e.pageY - posY;
-		console.log(relativePosX + ' , ' + relativePosY);
+		//console.log(relativePosX + ' , ' + relativePosY);
 			
 		if (relativePosX >= 1 && relativePosX <= 16) {
 			return 1;
@@ -183,19 +190,21 @@ define(['app/view/AboutView', 'app/model/Model', 'app/view/JokeView', 'app/view/
 		}
 		return 0;
 	};
-
+/*
 	var setStarsOnJokeView = function(val, tag) {
 		// Make sure that the value is in 0 - 5 range, multiply to get width
-
+//		console.log("var setStarsOnJokeView = function(val, tag) {", tag);
+//		console.log("var setStarsOnJokeView = function(val, tag) {", val);
 		$(tag).find(".starRating_ME").remove();
         var size = Math.max(0, (Math.min(5, val))) * 16;
         // Create stars holder
         var $span = $('<span />').width(size);
        $span.addClass("starRating_ME");
+       console.log("$span: ", $span[0]);
         // Replace the numerical value with stars
         $(tag).append($span);
 	};
-
+*/
 	var updateDropdownMenuForGroups = function() {
 		
 		$("#selected_group_ME").html(Model.currentGroup().get("groupName"));
@@ -351,6 +360,19 @@ define(['app/view/AboutView', 'app/model/Model', 'app/view/JokeView', 'app/view/
 		});
 		Model.addJokeToPerson(miguel, joke);
 		dreamTeam.jokes().add(joke, { at: 0 });
+
+		var rating;
+		rating = new Rating({
+			"PersonUsername" : micke.get("username"),
+			"ratorPersonCID" : micke.cid,
+			"points" : 3
+		});
+
+		micke.ratings().add(rating);
+		joke.ratings().add(rating);
+		joke.set({"sumOfRatingPoints" : rating.get("points")});
+		jokeCidToTest = joke.cid;
+		dreamTeam.ratings().add(rating);
 
 		joke = new Joke({"title" : "Lovers",
 			"joke" : "Boyfriend: Bitch<br>Girlfriend: I been called worse<br>Boyfriend: Like what<br>Girlfriend: your girlfriend",
