@@ -98,7 +98,7 @@ define(['app/view/AboutView', 'app/model/Model', 'app/view/JokeView', 'app/view/
 			var jokeAuthor_cid = joke.get("jokeAuthor_cid");
 			var ratings = joke.ratings().length;
 			console.log("jokeAuthor_cid: ", jokeAuthor_cid);
-			var jokeView = new JokeView({ el: $(".joke-list"), jokeModel_cid: jokeModel_cid, starRatingWidth: starRatingWidth, jokeAuthor_cid: jokeAuthor_cid, title: title, ratings: ratings, joke: jokeStr, jokeAuthor: jokeAuthor, date: joke.formatedDateString()});
+			var jokeView = new JokeView({ el: $(".joke-list"), jokeModel_cid: jokeModel_cid, starRatingWidth: starRatingWidth, jokeAuthor_cid: jokeAuthor_cid, title: title, ratings: ratings, joke: jokeStr.replace(/(?:\r\n|\r|\n)/g, '<br />'), jokeAuthor: jokeAuthor, date: joke.formatedDateString()});
 			$("#" + jokeModel_cid + " .stars_ME").click(function (e) {
 				if (Model.logedInPerson() != null) {
 					if (Model.logedInPerson().cid.localeCompare($(this).parent().parent().children(".jokeAuthor_cid").html()) != 0) {
@@ -332,7 +332,7 @@ define(['app/view/AboutView', 'app/model/Model', 'app/view/JokeView', 'app/view/
 
 		var joke;
 		joke = new Joke({"title" : "Homework",
-			"joke" : "Me: should I get into trouble for something I didn't do?<br>Teacher: No<br>Me: Good, because I didn't do my homework.",
+			"joke" : "Me: should I get into trouble for something I didn't do?\nTeacher: No\nMe: Good, because I didn't do my homework.",
 			"date" : Date()
 		});
 		Model.addJokeToPerson(miguel, joke);
@@ -350,7 +350,7 @@ define(['app/view/AboutView', 'app/model/Model', 'app/view/JokeView', 'app/view/
 		dreamTeam.ratings().add(rating);
 
 		joke = new Joke({"title" : "Lovers",
-			"joke" : "Boyfriend: Bitch<br>Girlfriend: I been called worse<br>Boyfriend: Like what<br>Girlfriend: your girlfriend",
+			"joke" : "Boyfriend: Bitch\nGirlfriend: I been called worse\nBoyfriend: Like what\nGirlfriend: your girlfriend",
 			"date" : Date()
 		});
 		Model.addJokeToPerson(miguel, joke);
