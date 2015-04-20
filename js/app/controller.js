@@ -64,6 +64,7 @@ define(['app/view/AboutView', 'app/model/Model', 'app/view/JokeView', 'app/view/
 			$('.custom_navbar_ME').html(_.template($("#navbar_when_NOT_loged_in").html()));
 			goToHome();
 			update();
+			$(".hiddenWhenNotLoggedIn_ME").css({"display" : "none"});
 		});
 	}
 
@@ -211,7 +212,7 @@ define(['app/view/AboutView', 'app/model/Model', 'app/view/JokeView', 'app/view/
 
 			update();
 			goToHome();
-			//$(".hiddenWhenNotLoggedIn_ME").attr("aria-hidden", "false");
+			$(".hiddenWhenNotLoggedIn_ME").css({"display" : "inline"});
 
 			new LoginWelcome_Alert_View({ el: $("body"), username: person.get('username')});
 
