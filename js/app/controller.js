@@ -168,7 +168,7 @@ define(['app/view/AboutView', 'app/model/Model', 'app/view/JokeView', 'app/view/
 		var relativePosY = e.pageY - posY;
 		//console.log(relativePosX + ' , ' + relativePosY);
 			
-		if (relativePosX >= 1 && relativePosX <= 16) {
+		if (relativePosX >= -2 && relativePosX <= 16) {
 			return 1;
 		} else if (relativePosX >= 17 && relativePosX <= 32) {
 			return 2;
@@ -176,7 +176,7 @@ define(['app/view/AboutView', 'app/model/Model', 'app/view/JokeView', 'app/view/
 			return 3;
 		} else if (relativePosX >= 49 && relativePosX <= 64) {
 			return 4;
-		} else if (relativePosX >= 65 && relativePosX <= 80) {
+		} else if (relativePosX >= 65 && relativePosX <= 83) {
 			return 5;
 		}
 		return 0;
@@ -211,6 +211,7 @@ define(['app/view/AboutView', 'app/model/Model', 'app/view/JokeView', 'app/view/
 
 			update();
 			goToHome();
+			//$(".hiddenWhenNotLoggedIn_ME").attr("aria-hidden", "false");
 
 			new LoginWelcome_Alert_View({ el: $("body"), username: person.get('username')});
 
