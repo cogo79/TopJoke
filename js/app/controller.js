@@ -159,6 +159,9 @@ define(['app/view/AboutView', 'app/model/Model', 'app/view/JokeView', 'app/view/
 					}
 				}
 			});
+			if (Model.logedInPerson() != null) {
+				$(".hiddenWhenNotLoggedIn_ME").css({"display" : "inline"});
+			}
 		});
 	};
 
@@ -212,7 +215,6 @@ define(['app/view/AboutView', 'app/model/Model', 'app/view/JokeView', 'app/view/
 
 			update();
 			goToHome();
-			$(".hiddenWhenNotLoggedIn_ME").css({"display" : "inline"});
 
 			new LoginWelcome_Alert_View({ el: $("body"), username: person.get('username')});
 
