@@ -45,16 +45,26 @@ span.stars_ME span {
 
 .commentTextareaContainer_ME {
 	padding: 10px;
-
 }
+
 .comment_textarea_ME {
-	width: 100%; border: 1px padding: 4px;
+	width: calc(100% - 80px);
+	border: 0px;
+	padding: 4px;
+	border-radius: 10px;
+	resize: none;
+	/*float: left;*/
+}
+.postCommentButton_ME {
+	top: 0px;
+	border-radius: 4px;
 }
 /*
 .joke_tag_ME textarea {
 	width: 100%;
 }
 */
+
 
 
 
