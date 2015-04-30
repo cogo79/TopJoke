@@ -27,6 +27,29 @@ span.stars_ME span {
 	cursor: hand;
 }
 
+.comments_ME {
+	margin-top: -20px;
+	margin-left: 20px;
+	margin-right: 20px;
+	border-color: black;
+	border-radius: 10px;
+}
+
+.commentContainer_ME {
+	border-style: solid;
+	border-left-width: 0px;
+	border-right-width: 0px;
+	border-top-width: 1px;
+    border-bottom-width: 0px;
+}
+
+.commentTextareaContainer_ME {
+	padding: 10px;
+
+}
+.comment_textarea_ME {
+	width: 100%; border: 1px padding: 4px;
+}
 /*
 .joke_tag_ME textarea {
 	width: 100%;

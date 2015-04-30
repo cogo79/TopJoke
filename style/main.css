@@ -9,7 +9,7 @@ body, html {
 
 .joke-list{
     height: calc(100% - 51px);
-    overflow-y:scroll;
+    overflow-y: scroll;
 }
 
 .htmlTag_login_welcome_ME {
