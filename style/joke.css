@@ -32,7 +32,7 @@ span.stars_ME span {
 	margin-left: 20px;
 	margin-right: 20px;
 	border-color: black;
-	border-radius: 10px;
+	border-radius: 5px;
 }
 
 .commentContainer_ME {
@@ -45,19 +45,23 @@ span.stars_ME span {
 
 .commentTextareaContainer_ME {
 	padding: 10px;
+	/*height: 71px;*/
 }
 
 .comment_textarea_ME {
-	width: calc(100% - 80px);
-	border: 0px;
+	width: calc(100% - 65px);
+	border:1px solid #C4C4C4;
 	padding: 4px;
-	border-radius: 10px;
+	border-radius: 5px;
 	resize: none;
 	/*float: left;*/
 }
+
 .postCommentButton_ME {
-	top: 0px;
-	border-radius: 4px;
+	float: right;
+	/*left: 30px;*/
+	border-radius: 5px;
+	height: 50px;
 }
 /*
 .joke_tag_ME textarea {
