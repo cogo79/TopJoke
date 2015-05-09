@@ -1,4 +1,5 @@
 require(['app/controller'], function(controller) {
+	console.log('app');
 	
 	controller.fillWithHardCodedData();
 

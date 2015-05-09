@@ -41,11 +41,11 @@ span.stars_ME span {
 	border-right-width: 0px;
 	border-top-width: 1px;
     border-bottom-width: 0px;
+    padding: 5px;
 }
 
 .commentTextareaContainer_ME {
 	padding: 10px;
-	/*height: 71px;*/
 }
 
 .comment_textarea_ME {
@@ -54,21 +54,17 @@ span.stars_ME span {
 	padding: 4px;
 	border-radius: 5px;
 	resize: none;
-	/*float: left;*/
 }
 
 .postCommentButton_ME {
 	float: right;
-	/*left: 30px;*/
 	border-radius: 5px;
 	height: 50px;
 }
-/*
-.joke_tag_ME textarea {
-	width: 100%;
-}
-*/
 
+.displayNone_ME {
+	display:none;
+}
 
 
 

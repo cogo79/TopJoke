@@ -134,6 +134,7 @@ define(['app/view/AboutView', 'app/model/Model', 'app/view/JokeView', 'app/view/
 					} else {
 						alert("You can't rate your own jokes!");
 					}
+
 				} else {
 					//alert("You must be logged in to be able to rate jokes.");
 				}
@@ -159,10 +160,23 @@ define(['app/view/AboutView', 'app/model/Model', 'app/view/JokeView', 'app/view/
 					}
 				}
 			});
-			if (Model.logedInPerson() != null) {
-				$(".hiddenWhenNotLoggedIn_ME").css({"display" : "inline"});
-			}
 		});
+		
+		if (Model.logedInPerson() != null) {
+			$(".hiddenWhenNotLoggedIn_ME").css({"display" : "inline"});
+			$('.commentsIcon_ME').click(function() {
+				//$(".comments_ME").css({"display" : "inline"});
+				console.log("??");
+				$comments = $(this).parent().parent().next();
+				if($comments.hasClass("displayNone_ME")){
+					console.log("remove class 'displayNone_ME??'");
+				   	$comments.removeClass("displayNone_ME");
+				}else{
+					console.log("add class 'displayNone_ME'");
+				  	$comments.addClass("displayNone_ME");
+				}
+			});
+		}
 	};
 
 	var starNumber = function (e, tag) { // Used to determin witch star was clicked or hoverd on etc.
