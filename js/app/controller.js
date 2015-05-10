@@ -165,16 +165,36 @@ define(['app/view/AboutView', 'app/model/Model', 'app/view/JokeView', 'app/view/
 		if (Model.logedInPerson() != null) {
 			$(".hiddenWhenNotLoggedIn_ME").css({"display" : "inline"});
 			$('.commentsIcon_ME').click(function() {
-				//$(".comments_ME").css({"display" : "inline"});
-				console.log("??");
 				$comments = $(this).parent().parent().next();
 				if($comments.hasClass("displayNone_ME")){
-					console.log("remove class 'displayNone_ME??'");
 				   	$comments.removeClass("displayNone_ME");
 				}else{
-					console.log("add class 'displayNone_ME'");
 				  	$comments.addClass("displayNone_ME");
 				}
+			});
+			$(".postCommentButton_ME").click(function() {
+				//console.log(Model.logedInPerson().cid);
+				//console.log($(this).parent().parent().prev().attr("id").replace("jokeTemplateCid_", ""));
+				
+				var comment = new Comment({
+					"comment" : $(this).prev().val(),
+					"PersonUsername" : Model.logedInPerson().get("username"),
+					"PersonCid" : Model.logedInPerson().cid,
+					"date" : Date.now()
+				});
+				Model.currentGroup().comments().add(comment);
+				Model.logedInPerson().comments().add(comment);
+				console.log(Model.currentGroup().jokes().get($(this).parent().parent().prev().attr("id").replace("jokeTemplateCid_", "")).comments().length);
+				Model.currentGroup().jokes().get($(this).parent().parent().prev().attr("id").replace("jokeTemplateCid_", "")).comments().add(comment);
+				console.log(Model.currentGroup().jokes().get($(this).parent().parent().prev().attr("id").replace("jokeTemplateCid_", "")).comments().length);
+				/*
+				joke = new Joke({"title" : "Super Mario lovers",
+					"joke" : "Mario jumped out of the screan and said to little Joe, 'Wanna go out and pick som mushrooms?'",
+					"date" : Date()
+				});
+				Model.addJokeToPerson(miguel, joke);
+				Model.mainGroup().jokes().add(joke, { at: 0 });
+				*/
 			});
 		}
 	};
