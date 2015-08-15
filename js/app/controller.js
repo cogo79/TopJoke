@@ -184,17 +184,10 @@ define(['app/view/AboutView', 'app/model/Model', 'app/view/JokeView', 'app/view/
 				});
 				Model.currentGroup().comments().add(comment);
 				Model.logedInPerson().comments().add(comment);
-				console.log(Model.currentGroup().jokes().get($(this).parent().parent().prev().attr("id").replace("jokeTemplateCid_", "")).comments().length);
+				//console.log(Model.currentGroup().jokes().get($(this).parent().parent().prev().attr("id").replace("jokeTemplateCid_", "")).comments().length);
 				Model.currentGroup().jokes().get($(this).parent().parent().prev().attr("id").replace("jokeTemplateCid_", "")).comments().add(comment);
-				console.log(Model.currentGroup().jokes().get($(this).parent().parent().prev().attr("id").replace("jokeTemplateCid_", "")).comments().length);
-				/*
-				joke = new Joke({"title" : "Super Mario lovers",
-					"joke" : "Mario jumped out of the screan and said to little Joe, 'Wanna go out and pick som mushrooms?'",
-					"date" : Date()
-				});
-				Model.addJokeToPerson(miguel, joke);
-				Model.mainGroup().jokes().add(joke, { at: 0 });
-				*/
+				//console.log(Model.currentGroup().jokes().get($(this).parent().parent().prev().attr("id").replace("jokeTemplateCid_", "")).comments().length);
+				
 			});
 		}
 	};
@@ -290,6 +283,10 @@ define(['app/view/AboutView', 'app/model/Model', 'app/view/JokeView', 'app/view/
 		}
 		if ($(".repeatPassword_signUpForm_ME").val().localeCompare('') == 0) {
 			return;
+		}
+		if ($(".phoneNumber_signUpForm_ME").val() > 0) {
+
+			console.log("Phone number entered");
 		}
 
 		var checkIfUsernameIsTaken = function(usernameStr) {

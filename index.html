@@ -112,11 +112,11 @@
 		<form role="form" action="js:app.newJokeButton_clicked();">
 			<h2 id="new_joke_header_ME">New joke</h2>
 			<div id="new_joke_title_wrappTag_ME" style="overflow:hidden">
-				<input id="new_joke_title_ME" type="text" class="form-control" placeholder="Title" required>
+				<input id="new_joke_title_ME" type="text" class="form-control" maxlength="70" placeholder="Title" required>
 				<!--<input  id="url" NAME="otherSite" style="width:70%" value=""/>-->
 			</div>
 			<div id="new_joke_text_wrappTag_ME" class="wrapper_the-fix_for_textarea_ME">
-				<textarea id="new_joke_text_ME" type="text" class="form-control" rows="8" placeholder="Joke text..." required />
+				<textarea id="new_joke_text_ME" type="text" class="form-control" maxlength="1000" rows="8" placeholder="Joke text..." required />
 			</div>
 
 			<button id="add_new_joke_button_ME" class="btn btn-lg btn-primary btn-block" type="submit">Add joke</button>
@@ -172,7 +172,7 @@
 	</script>
 
 	<script id="signup_template_ME" type="text/template">
-		<form class="form-signup" role="form" action="js:app.signUp();">
+		<form class="form-signup" role="form" action="#" onsubmit="js:app.signUp();">
 			<h2 class="form-signup-heading">Create account</h2>
 			<div class="star_column_ME">
 				<div class="div_star_column_ME"></div>
@@ -192,11 +192,11 @@
 				</div>
 			</div>
 			<ul class="list-group sign-up-form-list-group-ME">
-				<input type="text" class="list-group-item sign-up-form-ME firstName_signUpForm_ME" placeholder="First name">
-				<input type="text" class="list-group-item sign-up-form-ME surname_signUpForm_ME" placeholder="Surname">
-				<input type="text" class="list-group-item sign-up-form-ME username_signUpForm_ME" placeholder="Username" required>
-				<input type="email" class="list-group-item sign-up-form-ME email_signUpForm_ME" placeholder="e-mail" required>
-				<input type="tel" class="list-group-item sign-up-form-ME phoneNumber_signUpForm_ME" placeholder="Phone number">
+				<input type="text" class="list-group-item sign-up-form-ME firstName_signUpForm_ME" maxlength="20" placeholder="First name">
+				<input type="text" class="list-group-item sign-up-form-ME surname_signUpForm_ME" maxlength="20" placeholder="Surname">
+				<input type="text" class="list-group-item sign-up-form-ME username_signUpForm_ME" maxlength="20" placeholder="Username" required>
+				<input type="email" class="list-group-item sign-up-form-ME email_signUpForm_ME" maxlength="100" placeholder="e-mail" required>
+				<input type="number" class="list-group-item sign-up-form-ME phoneNumber_signUpForm_ME" placeholder="Phone number">
 				<input type="password" class="list-group-item sign-up-form-ME password_signUpForm_ME" placeholder="Password" required>
 				<input type="password" class="list-group-item sign-up-form-ME repeatPassword_signUpForm_ME" placeholder="Repeat password" required>
 			</ul>
