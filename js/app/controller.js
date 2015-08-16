@@ -272,18 +272,13 @@ define(['app/view/AboutView', 'app/model/Model', 'app/view/JokeView', 'app/view/
 	var signUp = function() {
 		console.log("signUp");
 
-		if ($(".username_signUpForm_ME").val().localeCompare('') == 0) {
+		if ($(".username_signUpForm_ME").checkValidity() &&
+			$(".email_signUpForm_ME").checkValidity() &&
+			$(".password_signUpForm_ME").checkValidity() &&
+			$(".repeatPassword_signUpForm_ME").checkValidity()) {
 			return;
 		}
-		if ($(".email_signUpForm_ME").val().localeCompare('') == 0) {
-			return;
-		}
-		if ($(".password_signUpForm_ME").val().localeCompare('') == 0) {
-			return;
-		}
-		if ($(".repeatPassword_signUpForm_ME").val().localeCompare('') == 0) {
-			return;
-		}
+		
 		if ($(".phoneNumber_signUpForm_ME").val() > 0) {
 
 			console.log("Phone number entered");
